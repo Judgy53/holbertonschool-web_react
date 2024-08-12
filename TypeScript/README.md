@@ -14,6 +14,7 @@ Topics Covered:
 Table of Contents:
 - [0. Creating an interface for a student](#0-creating-an-interface-for-a-student)
 - [1. Let's build a Teacher interface](#1-lets-build-a-teacher-interface)
+- [2. Extending the Teacher class](#2-extending-the-teacher-class)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -80,5 +81,33 @@ console.log(teacher3);
 // fullTimeEmployee: false
 // lastName: "Doe"
 // location: "London"
+```
+<sub>[Return to top](#typescript)</sub>
+
+## 2. Extending the Teacher class
+Write an interface named `Directors` that extends `Teacher`. It requires an attribute named `numberOfReports(number)`
+
+---
+- Out File: `task_1/js/main.ts`
+
+Example:
+
+```ts
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17,
+};
+console.log(director1);
+
+// should print
+// Object
+// firstName: "John"
+// fullTimeEmployee: true
+// lastName: "Doe"
+// location: "London"
+// numberOfReports: 17
 ```
 <sub>[Return to top](#typescript)</sub>
