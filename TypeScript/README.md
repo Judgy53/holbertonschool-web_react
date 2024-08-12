@@ -16,6 +16,7 @@ Table of Contents:
 - [1. Let's build a Teacher interface](#1-lets-build-a-teacher-interface)
 - [2. Extending the Teacher class](#2-extending-the-teacher-class)
 - [3. Printing teachers](#3-printing-teachers)
+- [4. Writing a class](#4-writing-a-class)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -125,4 +126,22 @@ Write an interface for the function named `printTeacherFunction`.
 ---
 - Out File: `task_1/js/main.ts`
 
+<sub>[Return to top](#typescript)</sub>
+
+## 4. Writing a class
+Write a Class named `StudentClass`:
+- The constructor accepts `firstName(string)` and `lastName(string)` arguments
+- The class has a method named `workOnHomework` that return the string `Currently working`
+- The class has a method named `displayName`. It returns the firstName of the student
+- The constructor of the class should be described through an Interface
+- The class should be described through an Interface
+
+Requirements:
+- You can reuse the Webpack configuration from the previous exercise to compile the code.
+- When running `npm run build`, no TypeScript error should be displayed.
+- Every variable should use TypeScript when possible.
+
+---
+- Out File: `task_1/js/main.ts`
+- 
 <sub>[Return to top](#typescript)</sub>
