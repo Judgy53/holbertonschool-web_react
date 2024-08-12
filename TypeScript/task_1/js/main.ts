@@ -20,9 +20,9 @@ const printTeacher: printTeacherFunction = (firstName, lastName) => {
 }
 
 interface StudentClassInterface {
-  firstName: string,
-  lastName: string,
-  workOnHomework(): string,
+  firstName: string
+  lastName: string
+  workOnHomework(): string
   displayName(): string
 }
 
