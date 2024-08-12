@@ -13,6 +13,7 @@ Topics Covered:
 
 Table of Contents:
 - [0. Creating an interface for a student](#0-creating-an-interface-for-a-student)
+- [1. Let's build a Teacher interface](#1-lets-build-a-teacher-interface)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -31,7 +32,53 @@ Write your code in the `js/main.ts` file:
 - When running, Webpack should return `No type errors found`.
 - Every variable should use TypeScript when possible.
 
+---
 - Given Files : `task_0/package.json, task_0/.eslintrc.js, task_0/tsconfig.json, task_0/webpack.config.js`
 - Out File: `task_0/js/main.ts`
 
+<sub>[Return to top](#typescript)</sub>
+
+## 1. Let's build a Teacher interface
+Write your code in the `task_1/js/main.ts` file:
+
+- Write an interface named `Teacher` that accepts the following elements:
+    - `firstName`: string - can only be set during initialization of an object of this interface
+    - `lastName`: string - can only be set during initialization of an object of this interface
+    - `fullTimeEmployee`: boolean
+    - `yearsOfExperience`: number - optional
+    - `location`: string
+    - Add the possibility to add any attribute to the `Teacher` object like `contract(boolean)` without specifying the name of the attribute:
+        - Property should be a string
+        - Type of this property can be anything
+
+**Requirements:**
+
+- When running, Webpack should return No type errors found.
+- Every variable should use TypeScript when possible.
+
+---
+- Given Files : `task_1/package.json, task_1/.eslintrc.js, task_1/tsconfig.json, task_1/webpack.config.js`
+- Out File: `task_1/js/main.ts`
+
+**Example:**
+
+```ts
+const teacher3: Teacher = {
+  firstName: 'John',
+  fullTimeEmployee: false,
+  lastName: 'Doe',
+  location: 'London',
+  contract: false,
+};
+
+console.log(teacher3);
+
+// should print
+// Object
+// contract: false
+// firstName: "John"
+// fullTimeEmployee: false
+// lastName: "Doe"
+// location: "London"
+```
 <sub>[Return to top](#typescript)</sub>
