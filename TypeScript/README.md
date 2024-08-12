@@ -19,6 +19,7 @@ Table of Contents:
 - [4. Writing a class](#4-writing-a-class)
 - [5. Advanced types Part 1](#5-advanced-types-part-1)
 - [6. Creating functions specific to employees](#6-creating-functions-specific-to-employees)
+- [7. String literal types](#7-string-literal-types)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -218,6 +219,26 @@ executeWork(createEmployee(200));
 Getting to work
 executeWork(createEmployee(1000));
 Getting to director tasks
+```
+
+<sub>[Return to top](#typescript)</sub>
+
+## 7. String literal types
+Write a String literal type named `Subjects` allowing a variable to have the value `Math` or `History` only. Write a function named `teachClass`:
+- it takes `todayClass` as an argument
+- it will return the string `Teaching Math` if `todayClass` is `Math`
+- it will return the string `Teaching History` if `todayClass` is `History`
+
+---
+- Out File: `task_2/js/main.ts`
+
+Expected result:
+
+```ts
+teachClass('Math');
+Teaching Math
+teachClass('History');
+Teaching History
 ```
 
 <sub>[Return to top](#typescript)</sub>

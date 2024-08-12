@@ -53,3 +53,14 @@ function executeWork(employee: Director | Teacher): string {
     return (employee as Teacher).workTeacherTasks()
   }
 }
+
+type Subjects = 'Math' | 'History'
+
+function teachClass(todayClass: Subjects): string {
+  switch (todayClass) {
+    case "Math":
+      return 'Teaching Math'
+    case "History":
+      return 'Teaching History'
+  }
+}
