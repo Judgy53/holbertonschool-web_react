@@ -17,6 +17,7 @@ Table of Contents:
 - [2. Extending the Teacher class](#2-extending-the-teacher-class)
 - [3. Printing teachers](#3-printing-teachers)
 - [4. Writing a class](#4-writing-a-class)
+- [5. Advanced types Part 1](#5-advanced-types-part-1)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -144,4 +145,54 @@ Requirements:
 ---
 - Out File: `task_1/js/main.ts`
 - 
+<sub>[Return to top](#typescript)</sub>
+
+## 5. Advanced types Part 1
+Create the `DirectorInterface` interface with the 3 expected methods:
+
+- `workFromHome()` returning a string
+- `getCoffeeBreak()` returning a string
+- `workDirectorTasks()` returning a string
+
+Create the `TeacherInterface` interface with the 3 expected methods:
+
+- `workFromHome()` returning a string
+- `getCoffeeBreak()` returning a string
+- `workTeacherTasks()` returning a string
+
+Create a class `Director` that will implement `DirectorInterface`
+
+- `workFromHome` should return the string `Working from home`
+- `getToWork` should return the string `Getting a coffee break`
+- `workDirectorTasks` should return the string `Getting to director tasks`
+
+Create a class `Teacher` that will implement `TeacherInterface`
+
+- `workFromHome` should return the string `Cannot work from home`
+- `getCoffeeBreak` should return the string `Cannot have a break`
+- `workTeacherTasks` should return the string `Getting to work`
+
+Create a function `createEmployee` with the following requirements:
+
+- It can return either a `Director` or a `Teacher` instance
+- It accepts 1 arguments:
+    - `salary`(either number or string)
+- if `salary` is a number and less than 500 - It should return a new `Teacher`. Otherwise it should return a `Director`
+
+
+---
+- Given Files : `task_2/package.json, task_2/.eslintrc.js, task_2/tsconfig.json, task_2/webpack.config.js`
+- Out File: `task_2/js/main.ts`
+
+Expected result:
+
+```ts
+console.log(createEmployee(200));
+Teacher
+console.log(createEmployee(1000));
+Director
+console.log(createEmployee('$500'));
+Director
+```
+
 <sub>[Return to top](#typescript)</sub>
