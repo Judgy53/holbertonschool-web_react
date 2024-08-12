@@ -15,6 +15,7 @@ Table of Contents:
 - [0. Creating an interface for a student](#0-creating-an-interface-for-a-student)
 - [1. Let's build a Teacher interface](#1-lets-build-a-teacher-interface)
 - [2. Extending the Teacher class](#2-extending-the-teacher-class)
+- [3. Printing teachers](#3-printing-teachers)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -110,4 +111,18 @@ console.log(director1);
 // location: "London"
 // numberOfReports: 17
 ```
+<sub>[Return to top](#typescript)</sub>
+
+## 3. Printing teachers
+Write a function `printTeacher`:
+
+- It accepts two arguments `firstName` and `lastName`
+- It returns the first letter of the firstName and the full lastName
+- Example: `printTeacher("John", "Doe") -> J. Doe`
+
+Write an interface for the function named `printTeacherFunction`.
+
+---
+- Out File: `task_1/js/main.ts`
+
 <sub>[Return to top](#typescript)</sub>
