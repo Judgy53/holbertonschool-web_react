@@ -1,6 +1,9 @@
 # Node installed modules
 node_modules/
 
-# Webpack compiled js
+# Webpack compiled files
 **/dist/main.js*
-**/public/bundle.js*
+**/public/*
+
+# Allow index.html
+!**/public/index.html
