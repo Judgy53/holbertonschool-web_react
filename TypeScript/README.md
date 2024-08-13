@@ -20,6 +20,7 @@ Table of Contents:
 - [5. Advanced types Part 1](#5-advanced-types-part-1)
 - [6. Creating functions specific to employees](#6-creating-functions-specific-to-employees)
 - [7. String literal types](#7-string-literal-types)
+- [8. Ambient Namespaces](#8-ambient-namespaces)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -239,6 +240,83 @@ teachClass('Math');
 Teaching Math
 teachClass('History');
 Teaching History
+```
+
+<sub>[Return to top](#typescript)</sub>
+
+## 8. Ambient Namespaces
+The first part of this will require that you build an `interface` and a `type`. Inside a file named `interface.ts`:
+- Create a type `RowID` and set it equal to `number`
+- Create an interface `RowElement` that contains these 3 fields:
+    - `firstName`: `string`
+    - `lastName`: `string`
+    - `age?`: `number`
+
+You are building the next part of the application architecture. The goal is to save the entities to a database. Because of time constraints, you can’t write a connector to the database, and you decided to download a library called `crud.js`. Copy this file into the `task_3/js` directory.
+
+Here it is
+
+```js
+export function insertRow(row) {
+  console.log('Insert row', row);
+  return Math.floor(Math.random() * Math.floor(1000));
+}
+
+export function deleteRow(rowId) {
+  console.log('Delete row id', rowId);
+  return;
+}
+
+export function updateRow(rowId, row) {
+  console.log(`Update row ${rowId}`, row);
+
+  return rowId;
+}
+```
+
+Write an ambient file within `task_3/js`, named `crud.d.ts` containing the type declarations for each crud function. At the top of the file import `RowID` and `RowElement` from `interface.ts`.
+
+In `main.ts`
+
+- At the top of the file create a [triple slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html "triple slash directive") that includes all the dependencies from `crud.d.ts`
+- Import the `rowID` type and `rowElement` from `interface.ts`
+- Import everything from `crud.js` as `CRUD`
+
+Create an object called `row` with the type `RowElement` with the fields set to these values:
+
+- `firstName`: `Guillaume`
+- `lastName`: `Salva`
+
+Create a `const` variable named `newRowID` with the type `RowID` and assign the value the `insertRow` command.
+
+Next, create a `const` variable named `updatedRow` with the type `RowElement` and update `row` with an age field set to `23`
+
+Finally, call the `updateRow` and `deleteRow` commands.
+
+Requirements:
+
+- When running `npm run build`, no TypeScript error should be displayed.
+- Every variable should use TypeScript when possible.
+- The main file and the ambient file should both import the types defined in the interface file.
+- You can easily test your ambient file by looking at the intellisense of your IDE when using the 3rd party functions.
+
+---
+- Given Files: `task_3/package.json, task_3/.eslintrc.js, task_3/tsconfig.json, task_3/webpack.config.js`
+- Out Files: `task_3/js/main.ts, task_3/js/interface.ts, task_3/js/crud.d.ts`
+
+Expected result:
+
+```ts
+const obj = {firstName: "Guillaume", lastName: "Salva"};
+CRUD.insertRow(obj)
+// Insert row {firstName: "Guillaume", lastName: "Salva"}
+
+const updatedRow: RowElement = { firstName: "Guillaume", lastName: "Salva", age: 23 };
+CRUD.updateRow(newRowID, updatedRow);
+// Update row 125 {firstName: "Guillaume", lastName: "Salva", age: 23}
+
+CRUD.deleteRow(125);
+// Delete row id 125
 ```
 
 <sub>[Return to top](#typescript)</sub>
