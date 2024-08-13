@@ -22,6 +22,7 @@ Table of Contents:
 - [7. String literal types](#7-string-literal-types)
 - [8. Ambient Namespaces](#8-ambient-namespaces)
 - [9. Namespace \& Declaration merging](#9-namespace--declaration-merging)
+- [10. Brand convention \& Nominal typing](#10-brand-convention--nominal-typing)
 
 ## 0. Creating an interface for a student
 Write your code in the `js/main.ts` file:
@@ -148,7 +149,7 @@ Requirements:
 
 ---
 - Out File: `task_1/js/main.ts`
-- 
+-
 <sub>[Return to top](#typescript)</sub>
 
 ## 5. Advanced types Part 1
@@ -349,5 +350,21 @@ In `task_4/js/subjects`:
 ---
 - Given Files: `task_4/package.json, task_4/tsconfig.json`
 - Out File: `task_4/js/subjects/Cpp.ts, task_4/js/subjects/Java.ts, task_4/js/subjects/React.ts, task_4/js/subjects/Subject.ts, task_4/js/subjects/Teacher.ts`
+
+<sub>[Return to top](#typescript)</sub>
+
+## 10. Brand convention & Nominal typing
+Create two interfaces `MajorCredits` and `MinorCredits` in `task_5/js/main.ts`:
+- Each interface defines a number named `credits`
+- Add a brand property to each interface in order to uniquely identify each of them
+
+Create two functions named `sumMajorCredits` and `sumMinorCredits` in `task_5/js/main.ts`:
+- Each function takes two arguments `subject1` and `subject2`
+- `sumMajorCredits` returns `MajorCredits` value and `sumMinorCredits` returns `MinorCredits` value
+- Each function sums the credits of the two subjects
+
+---
+- Given Files: `task_5/package.json, task_5/webpack.config.js, task_5/tsconfig.json`
+- Out File: `task_5/js/main.ts`
 
 <sub>[Return to top](#typescript)</sub>
