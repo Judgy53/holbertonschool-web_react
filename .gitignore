@@ -2,6 +2,7 @@
 node_modules/
 
 # Webpack compiled files
+TypeScript/**/dist/*
 **/dist/main.js*
 **/public/*
 
