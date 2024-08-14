@@ -5,6 +5,7 @@ node_modules/
 TypeScript/**/dist/*
 **/dist/main.js*
 **/public/*
+**/task_3/public/
 
 # Allow index.html
 !**/public/index.html
