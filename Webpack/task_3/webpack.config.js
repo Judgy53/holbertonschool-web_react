@@ -15,7 +15,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: 'all'
     },
   },
   module: {
@@ -30,13 +30,17 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin(), new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Holberton Dashboard',
+      inject: true,
+    })
+  ],
   devtool: 'inline-source-map',
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
+    contentBase: path.join(__dirname, './public'),
+    open: true,
     port: 8564,
   },
 };
