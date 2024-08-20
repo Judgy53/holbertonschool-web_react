@@ -17,6 +17,16 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: ['file-loader', 'image-webpack-loader'],
       },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env' ]
+          }
+        }
+      }
     ],
   },
   devtool: 'inline-source-map',
@@ -24,6 +34,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, '../dist'),
     },
+    open: true,
     hot: true,
     port: 8564,
   },
