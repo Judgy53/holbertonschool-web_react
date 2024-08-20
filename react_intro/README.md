@@ -14,6 +14,7 @@ Table of Contents:
 - [1. Embedding expressions, functions](#1-embedding-expressions-functions)
 - [2. Modify the App](#2-modify-the-app)
 - [3. Modify the Notifications](#3-modify-the-notifications)
+- [4. Create basic tests with four tests](#4-create-basic-tests-with-four-tests)
 
 ## 0. Basic application
 
@@ -106,5 +107,14 @@ Table of Contents:
 - File: `task_2/dashboard/src/, task_2/dashboard/src/utils.js, task_2/dashboard/src/Notifications.js, task_2/dashboard/src/Notifications.css`
 
 ![](previews/3.png)
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 4. Create basic tests with four tests
+**in `task_3/dashboard/src/utils.test.js`:**
+- Write a test to check that the function `getFullYear` returns the correct year (be careful to not create a time bomb)
+- Write a test to check that `getFooterCopy` returns the correct string when the argument is true or false
+- Write a test checking the returned string for `getLatestNotification`
+- File: `task_3/dashboard/src/utils.test.js`
 
 <sub>[Return to top](#react_intro)</sub>
