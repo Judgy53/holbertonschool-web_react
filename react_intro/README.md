@@ -15,6 +15,7 @@ Table of Contents:
 - [2. Modify the App](#2-modify-the-app)
 - [3. Modify the Notifications](#3-modify-the-notifications)
 - [4. Create basic tests with four tests](#4-create-basic-tests-with-four-tests)
+- [5. Install Enzyme](#5-install-enzyme)
 
 ## 0. Basic application
 
@@ -116,5 +117,12 @@ Table of Contents:
 - Write a test to check that `getFooterCopy` returns the correct string when the argument is true or false
 - Write a test checking the returned string for `getLatestNotification`
 - File: `task_3/dashboard/src/utils.test.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 5. Install Enzyme
+- Install Enzyme and the enzyme adapter with `npm`
+- Create a file named `setupTests.js` and configure the adapter for Enzyme
+- File: `task_3/dashboard/src/setupTests.js`
 
 <sub>[Return to top](#react_intro)</sub>
