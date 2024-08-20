@@ -17,6 +17,7 @@ Table of Contents:
 - [4. Create basic tests with four tests](#4-create-basic-tests-with-four-tests)
 - [5. Install Enzyme](#5-install-enzyme)
 - [6. Create React tests](#6-create-react-tests)
+- [7. Deploy to a GitHub page](#7-deploy-to-a-github-page)
 
 ## 0. Basic application
 
@@ -150,5 +151,14 @@ Table of Contents:
 Test Suites: 2 passed, 2 total
 Tests: 7 passed, 7 total
 ```
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 7. Deploy to a GitHub page
+Deploy your application to GitHub Pages using `gh-pages` branch and `create-react-app`
+
+Your application should be working correctly when accessing the GitHub URL.
+
+- File: `task_4/`
 
 <sub>[Return to top](#react_intro)</sub>
