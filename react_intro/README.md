@@ -18,6 +18,7 @@ Table of Contents:
 - [5. Install Enzyme](#5-install-enzyme)
 - [6. Create React tests](#6-create-react-tests)
 - [7. Deploy to a GitHub page](#7-deploy-to-a-github-page)
+- [8. Create a project using Webpack](#8-create-a-project-using-webpack)
 
 ## 0. Basic application
 
@@ -160,5 +161,24 @@ Deploy your application to GitHub Pages using `gh-pages` branch and `create-reac
 Your application should be working correctly when accessing the GitHub URL.
 
 - File: `task_4/`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 8. Create a project using Webpack
+Without reusing `create-react-app` or the code from the previous exercise, start a brand new npm project
+
+Reusing what you learned during the Webpack module:
+- Set up a system to output a `bundle.js` file in a `dist` folder
+- Set up a dev server with hot reloading
+- Create a `src` folder that will contain your Javascript
+- Set up a simple html file in the `dist` folder that will import the bundle file in the `body` tag.
+
+Install and configure the various plugins to support:
+- inline source map
+- style loader
+- css loader
+- image webpack loader
+
+- File: `task_5/dashboard/config/webpack.config.js, task_5/dashboard/dist/index.html, task_5/dashboard/src/index.js`
 
 <sub>[Return to top](#react_intro)</sub>
