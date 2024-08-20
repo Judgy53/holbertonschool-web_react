@@ -13,6 +13,7 @@ Table of Contents:
 - [0. Basic application](#0-basic-application)
 - [1. Embedding expressions, functions](#1-embedding-expressions-functions)
 - [2. Modify the App](#2-modify-the-app)
+- [3. Modify the Notifications](#3-modify-the-notifications)
 
 ## 0. Basic application
 
@@ -76,5 +77,34 @@ Table of Contents:
 - when the user clicks on a label, it should select the corresponding input
 - add one button element with the text “OK”
 - File: `task_2/dashboard/src/, task_2/dashboard/src/App.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 3. Modify the Notifications
+**in `task_2/dashboard/src/utils.js`:**
+- Create a function named `getLatestNotification` that returns the following string: `<strong>Urgent requirement</strong> - complete by EOD`
+
+**in `task_2/dashboard/src/Notifications.js` in the Notifications div:**
+- add a button element with inline styling (without using the CSS file):
+    - show button on right side of notifications box
+    - `aria-label` is `Close`
+    - when user clicks on the button it logs to the console `Close button has been clicked`
+- in the button element there should be an “x”
+- after the paragraph add an unordered list
+    - the list has the following items:
+        - The first one has a default priority and says `New course available`
+        - The second one has a urgent priority and says `New resume available`
+        - The last item has a urgent priority and should correctly displays the content of `getLatestNotification` using `dangerouslySetInnerHTML`
+        - Add the priority to the items of the list using a `data` attribute
+
+**in `task_2/dashboard/src/Notifications.css`:**
+- style the notification priorities using their data attribute: set the color of default items to blue, and the color of urgent items to red.
+
+**Requirements:**
+- When running, there should not be any lint error in the console
+- Your app should look like the following screenshot:
+- File: `task_2/dashboard/src/, task_2/dashboard/src/utils.js, task_2/dashboard/src/Notifications.js, task_2/dashboard/src/Notifications.css`
+
+![](previews/3.png)
 
 <sub>[Return to top](#react_intro)</sub>

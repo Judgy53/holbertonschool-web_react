@@ -17,3 +17,11 @@ export function getFooterCopy(isIndex) {
 
   return 'Holberton School main';
 }
+
+/**
+ * Get latest notification HTML string
+ * @returns {string}
+ */
+export function getLatestNotification() {
+  return '<strong>Urgent requirement</strong> - complete by EOD';
+}
