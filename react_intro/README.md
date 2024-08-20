@@ -12,6 +12,7 @@ Topics Covered:
 Table of Contents:
 - [0. Basic application](#0-basic-application)
 - [1. Embedding expressions, functions](#1-embedding-expressions-functions)
+- [2. Modify the App](#2-modify-the-app)
 
 ## 0. Basic application
 
@@ -65,5 +66,15 @@ Table of Contents:
 **Requirements:**
 - When running, **there should not be any lint errors** in the console
 - File: `task_1/dashboard/src/, task_1/dashboard/src/utils.js, task_1/dashboard/src/App.js, task_1/dashboard/src/Notifications.css, task_1/dashboard/src/Notifications.js, task_1/dashboard/src/index.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 2. Modify the App
+**using your code from the previous task, in `task_2/dashboard/src/App.js` under the paragraph that says `Login to access the full dashboard`:**
+- add a label and input for email
+- add a label and input for password
+- when the user clicks on a label, it should select the corresponding input
+- add one button element with the text “OK”
+- File: `task_2/dashboard/src/, task_2/dashboard/src/App.js`
 
 <sub>[Return to top](#react_intro)</sub>
