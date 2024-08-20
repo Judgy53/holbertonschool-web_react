@@ -19,6 +19,8 @@ Table of Contents:
 - [6. Create React tests](#6-create-react-tests)
 - [7. Deploy to a GitHub page](#7-deploy-to-a-github-page)
 - [8. Create a project using Webpack](#8-create-a-project-using-webpack)
+- [9. Install Babel](#9-install-babel)
+- [10. Reorganize the files](#10-reorganize-the-files)
 
 ## 0. Basic application
 
@@ -180,5 +182,28 @@ Install and configure the various plugins to support:
 - image webpack loader
 
 - File: `task_5/dashboard/config/webpack.config.js, task_5/dashboard/dist/index.html, task_5/dashboard/src/index.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 9. Install Babel
+- Install Babel, and in `task_5/dashboard/.babelrc`, add the presets for `preset-env` and `preset-react`
+- Add a `babel-loader` to the Webpack configuration so you can support `js` and `jsx` files
+- Import the files that you wrote in the previous task. All the Javascript and React code should be within the `src` folder
+
+At this point, running `webpack-dev-server` should correctly execute your code, and you should be able to see the dashboard like in the last task
+
+- File: `task_5/dashboard/.babelrc, task_5/dashboard/config/webpack.config.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 10. Reorganize the files
+Let’s reorganize the files in our project:
+- Every file related to the App, should be within a `App` folder
+- Every file related to the Notifications, should be within a `Notifications` folder
+- Every file related to the utils functions, should be within a `utils` folder
+- Every asset file should be within the `assets` folder
+- Set up the `favicon.ico` in the `dist` folder
+- Webpack config file should be within a `config` folder if it isn’t already
+- File: `task_5/dashboard/src/App/App.css, task_5/dashboard/src/App/App.js, task_5/dashboard/src/App/App.test.js, task_5/dashboard/src/Notifications/Notifications.css, task_5/dashboard/src/Notifications/Notifications.js, task_5/dashboard/src/Notifications/Notifications.test.js, task_5/dashboard/src/utils/utils.js, task_5/dashboard/src/utils/utils.test.js, task_5/dashboard/config/webpack.config.js, task_5/dashboard/src/assets/holberton-logo.jpg, task_5/dashboard/dist/favicon.ico`
 
 <sub>[Return to top](#react_intro)</sub>

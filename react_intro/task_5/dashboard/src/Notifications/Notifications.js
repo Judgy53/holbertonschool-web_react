@@ -1,5 +1,5 @@
 import React from 'react';
-import { getLatestNotification } from './utils';
+import { getLatestNotification } from '../utils/utils';
 import './Notifications.css';
 
 class Notifications extends React.Component {
