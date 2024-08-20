@@ -16,6 +16,7 @@ Table of Contents:
 - [3. Modify the Notifications](#3-modify-the-notifications)
 - [4. Create basic tests with four tests](#4-create-basic-tests-with-four-tests)
 - [5. Install Enzyme](#5-install-enzyme)
+- [6. Create React tests](#6-create-react-tests)
 
 ## 0. Basic application
 
@@ -124,5 +125,30 @@ Table of Contents:
 - Install Enzyme and the enzyme adapter with `npm`
 - Create a file named `setupTests.js` and configure the adapter for Enzyme
 - File: `task_3/dashboard/src/setupTests.js`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 6. Create React tests
+**in `task_3/dashboard/src/App.test.js` create four tests:**
+- test that App renders without crashing
+- verify that App renders a div with the class `App-header`
+- verify that App renders a div with the class `App-body`
+- verify that App renders a div with the class `App-footer`
+
+**in `task_3/dashboard/src/Notifications.test.js` create three tests**
+- test that Notifications renders without crashing
+- verify that Notifications renders three list items
+- verify that Notifications renders the text `Here is the list of notifications`
+
+**Requirements:**
+
+- When running the test suites, you should see the following result
+- You must use shallow rendering to write the React tests
+- File: `task_3/dashboard/src/App.test.js, task_3/dashboard/src/Notifications.test.js`
+
+```
+Test Suites: 2 passed, 2 total
+Tests: 7 passed, 7 total
+```
 
 <sub>[Return to top](#react_intro)</sub>
