@@ -21,6 +21,7 @@ Table of Contents:
 - [8. Create a project using Webpack](#8-create-a-project-using-webpack)
 - [9. Install Babel](#9-install-babel)
 - [10. Reorganize the files](#10-reorganize-the-files)
+- [11. Testing](#11-testing)
 
 ## 0. Basic application
 
@@ -205,5 +206,23 @@ Let’s reorganize the files in our project:
 - Set up the `favicon.ico` in the `dist` folder
 - Webpack config file should be within a `config` folder if it isn’t already
 - File: `task_5/dashboard/src/App/App.css, task_5/dashboard/src/App/App.js, task_5/dashboard/src/App/App.test.js, task_5/dashboard/src/Notifications/Notifications.css, task_5/dashboard/src/Notifications/Notifications.js, task_5/dashboard/src/Notifications/Notifications.test.js, task_5/dashboard/src/utils/utils.js, task_5/dashboard/src/utils/utils.test.js, task_5/dashboard/config/webpack.config.js, task_5/dashboard/src/assets/holberton-logo.jpg, task_5/dashboard/dist/favicon.ico`
+
+<sub>[Return to top](#react_intro)</sub>
+
+## 11. Testing
+Install Jest and Enzyme to run your test suites
+
+move the `setupTests.js` file to `config` folder if you have not already
+
+**Requirements:**
+- Your `package.json` should have the two following scripts:
+
+```json
+"start": "webpack-dev-server --mode development --config config/webpack.config.js",
+"test": "jest"
+```
+- Running the first script should start your dev server and build without any error
+- Running the second script should start your test suites and pass for each test
+- File: `task_5/dashboard/config/setupTests.js, task_5/dashboard/package.json`
 
 <sub>[Return to top](#react_intro)</sub>
