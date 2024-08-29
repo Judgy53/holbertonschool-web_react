@@ -13,6 +13,7 @@ Table of Contents:
 - [0. Commence with class components](#0-commence-with-class-components)
 - [1. Lifecycles](#1-lifecycles)
 - [2. Handling Events](#2-handling-events)
+- [3. Reusable comments \& specialization](#3-reusable-comments--specialization)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -81,5 +82,34 @@ In the `NotificationItem` test file:
 - At this point, reloading the App should display the exact same page as the last task. Use the React Chrome Extension to make sure the Notifications component displays correctly
 - The console in your browser should not show any error or warning
 - File: `task_2/dashboard/src/Notifications/NotificationItem.js, task_2/dashboard/src/Notifications/NotificationItem.test.js, task_2/dashboard/src/Notifications/Notifications.js, task_2/dashboard/src/Notifications/Notifications.test.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 3. Reusable comments & specialization
+
+**Containment**
+
+Create a new component named `BodySection`. The component does not know its children. It should output the following:
+- A div with the class `bodySection`
+- Within the div, a `h2` element containing a title passed as a prop
+- Under the `h2` the children of `BodySection`
+
+**Tips:**
+
+Rendering the following
+```jsx
+<BodySection title="test">
+  <p>test</p>
+</BodySection>
+```
+
+Should generate:
+```html
+<div className="bodySection">
+  <h2>test</h2>
+  <p>test</p>
+</div>
+```
+- File: `task_3/dashboard/src/BodySection/BodySection.js`
 
 <sub>[Return to top](#react_component)</sub>
