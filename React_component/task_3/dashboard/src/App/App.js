@@ -5,6 +5,8 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import CourseList from '../CourseList/CourseList';
 import Footer from '../Footer/Footer';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import './App.css';
 
@@ -54,9 +56,16 @@ class App extends React.Component {
               Login to access the full dashboard
             </p>
             {this.props.isLoggedIn
-              ? <CourseList listCourses={this.listCourses} />
-              : <Login />
+              ? <BodySectionWithMarginBottom title="Course list" >
+                  <CourseList listCourses={this.listCourses} />
+                </BodySectionWithMarginBottom>
+              : <BodySectionWithMarginBottom title="Log in to continue" >
+                  <Login />
+                </BodySectionWithMarginBottom>
             }
+            <BodySection title="News from the School">
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda suscipit ipsam a quos voluptates dolor voluptas, unde quis atque, rerum vitae laudantium eius architecto recusandae, harum repellat labore sed iusto.</p>
+            </BodySection>
           </div>
           <div className="App-footer">
             <Footer></Footer>
