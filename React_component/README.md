@@ -16,6 +16,7 @@ Table of Contents:
 - [3. Reusable comments \& specialization](#3-reusable-comments--specialization)
 - [4. Specialization](#4-specialization)
 - [5. Use the new components](#5-use-the-new-components)
+- [6. Test the new components](#6-test-the-new-components)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -138,5 +139,32 @@ in `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.css`
 - Wrap the `Login` component with the newly created `BodySectionWithMarginBottom` component. The title should be `Log in to continue`
 - Using the `BodySection` component, add a new block with the title `News from the School`. The component should contain a paragraph with some random text
 - File: `task_3/dashboard/src/App/App.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 6. Test the new components
+in `task_3/dashboard/src/BodySection/BodySection.test.js`:
+- Add one test checking that shallowing the component should render correctly the children and one `h2` element
+
+E.g. with the following code:
+
+```jsx
+<BodySection title="test title">
+  <p>test children node</p>
+</BodySection>
+```
+
+You should check that:
+- There is one `h2` element and it includes the text `test title`
+- There is one `p` element and it includes the text `test children node`
+
+in `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js`:
+- Add one test checking that shallowing the component should render correctly a `BodySection` component and that the props are passed correctly to the child component
+
+**Requirements:**
+
+- Make sure that the CSS is correctly applied to your component
+- The console in your browser should not show any error or warning
+- File: `task_3/dashboard/src/BodySection/BodySection.test.js, task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js`
 
 <sub>[Return to top](#react_component)</sub>
