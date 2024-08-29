@@ -14,6 +14,7 @@ Table of Contents:
 - [1. Lifecycles](#1-lifecycles)
 - [2. Handling Events](#2-handling-events)
 - [3. Reusable comments \& specialization](#3-reusable-comments--specialization)
+- [4. Specialization](#4-specialization)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -111,5 +112,21 @@ Should generate:
 </div>
 ```
 - File: `task_3/dashboard/src/BodySection/BodySection.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 4. Specialization
+in `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.js`, create a new component named `BodySectionWithMarginBottom`. The component does not know its children. It should output the following:
+- A div with the class `bodySectionWithMargin`
+- Within the div, a `BodySection` element with the same props passed to `bodySectionWithMarginBottom`
+
+in `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.css`
+- Set the style for the class `bodySectionWithMargin` with a margin bottom of 40px
+- Import the styling into the `BodySectionWithMarginBottom` component
+
+**Requirements:**
+- Make sure to define the propTypes for both props
+- Do not repeat each props manually and use the spread operator
+- File: `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.js, task_3/dashboard/src/BodySection/BodySection.css`
 
 <sub>[Return to top](#react_component)</sub>

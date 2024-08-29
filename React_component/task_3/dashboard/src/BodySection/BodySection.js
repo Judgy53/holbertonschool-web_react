@@ -11,6 +11,7 @@ function BodySection({ title, children }) {
 
 BodySection.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.node
 }
 
 export default BodySection;
