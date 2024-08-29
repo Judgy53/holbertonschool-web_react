@@ -17,6 +17,7 @@ Table of Contents:
 - [4. Specialization](#4-specialization)
 - [5. Use the new components](#5-use-the-new-components)
 - [6. Test the new components](#6-test-the-new-components)
+- [7. Create WithLogging HOC](#7-create-withlogging-hoc)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -166,5 +167,17 @@ in `task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js`:
 - Make sure that the CSS is correctly applied to your component
 - The console in your browser should not show any error or warning
 - File: `task_3/dashboard/src/BodySection/BodySection.test.js, task_3/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 7. Create WithLogging HOC
+We would like to add a way to log to the console every time a component has been mounted and every time it is about to unmount.
+
+**To not repeat the same code everywhere, create a HOC component in `task_4/dashboard/src/HOC/WithLogging.js`:**
+- The component should log to the console `Component NAME_OF_THE_WRAPPED_COMPONENT is mounted` on `componentDidMount()`
+- The component should log to the console `Component NAME_OF_THE_WRAPPED_COMPONENT is going to unmount` on `componentWillUnmount()`
+- Modify the `displayName` of the HOC to always display `WithLogging(NAME_OF_THE_WRAPPED_COMPONENT)` in the React Chrome Extension or for debugging
+- `NAME_OF_THE_WRAPPED_COMPONENT` should be the name of the wrapped component or class. If the wrapped element has no name it should default to `Component`
+- File: `task_4/dashboard/src/HOC/WithLogging.js`
 
 <sub>[Return to top](#react_component)</sub>
