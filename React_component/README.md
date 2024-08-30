@@ -19,6 +19,7 @@ Table of Contents:
 - [6. Test the new components](#6-test-the-new-components)
 - [7. Create WithLogging HOC](#7-create-withlogging-hoc)
 - [8. Write a test for the HOC](#8-write-a-test-for-the-hoc)
+- [9. Declare a pure component](#9-declare-a-pure-component)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -196,5 +197,13 @@ We would like to add a way to log to the console every time a component has been
 - In the test file, make sure to restore the console function you mocked
 - The console in your browser should not show any error or warning
 - File: `task_4/dashboard/src/HOC/WithLogging.test.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 9. Declare a pure component
+
+**In `task_5/dashboard/src/Notifications/NotificationItem.js`:**
+- Modify the component to make it “pure”. Which means that it will only update when its props and state are different
+- File: `task_5/dashboard/src/Notifications/NotificationItem.js`
 
 <sub>[Return to top](#react_component)</sub>
