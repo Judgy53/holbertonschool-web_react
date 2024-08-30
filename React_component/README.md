@@ -20,6 +20,7 @@ Table of Contents:
 - [7. Create WithLogging HOC](#7-create-withlogging-hoc)
 - [8. Write a test for the HOC](#8-write-a-test-for-the-hoc)
 - [9. Declare a pure component](#9-declare-a-pure-component)
+- [10. Make your own pure component](#10-make-your-own-pure-component)
 
 ## 0. Commence with class components
 Start this project with files from the the last task of the `React Props` project:
@@ -205,5 +206,13 @@ We would like to add a way to log to the console every time a component has been
 **In `task_5/dashboard/src/Notifications/NotificationItem.js`:**
 - Modify the component to make it “pure”. Which means that it will only update when its props and state are different
 - File: `task_5/dashboard/src/Notifications/NotificationItem.js`
+
+<sub>[Return to top](#react_component)</sub>
+
+## 10. Make your own pure component
+**In `task_5/dashboard/src/Notifications/Notifications.js`:**
+- Modify the file so it only updates itself when the new property `listNotifications` has a longer list of elements than the previously
+- You must implement the function `shouldComponentUpdate` to add this performance optimization
+- File: `task_5/dashboard/src/Notifications/Notifications.js`
 
 <sub>[Return to top](#react_component)</sub>

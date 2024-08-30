@@ -5,9 +5,8 @@ import NotificationItemShape from './NotificationItemShape';
 import './Notifications.css';
 
 class Notifications extends React.Component {
-  constructor(props) {
-    super(props);
-    this.markAsRead = this.markAsRead.bind(this);
+  shouldComponentUpdate(nextProps) {
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
   }
 
   markAsRead(id) {
