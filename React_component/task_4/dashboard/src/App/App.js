@@ -9,7 +9,6 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import './App.css';
-import WithLogging from '../HOC/WithLogging';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,10 +46,9 @@ class App extends React.Component {
   }
 
   render() {
-    const NotificationsWithLogging = WithLogging(Notifications);
     return (
       <>
-        <NotificationsWithLogging listNotifications={this.listNotifications}></NotificationsWithLogging>
+        <Notifications listNotifications={this.listNotifications}></Notifications>
         <div className="App">
           <Header></Header>
           <div className="App-body">

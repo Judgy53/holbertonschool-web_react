@@ -1,7 +1,7 @@
 import React from 'react';
 
 function WithLogging(WrappedComponent) {
-  const wrappedName = WrappedComponent.displayName ?? 'Component';
+  const wrappedName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
   return class extends React.Component {
     static displayName = `WithLogging(${wrappedName})`;

@@ -5,8 +5,6 @@ import NotificationItemShape from './NotificationItemShape';
 import './Notifications.css';
 
 class Notifications extends React.Component {
-  static displayName = 'Notifications';
-
   constructor(props) {
     super(props);
     this.markAsRead = this.markAsRead.bind(this);
