@@ -87,4 +87,37 @@ describe('<Notifications />', () => {
 
     logMock.mockRestore();
   });
+
+  it('does not rerender when updating the props with the same list', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'test1' }
+    ];
+
+    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+    const renderMock = jest.spyOn(wrapper.instance(), 'render');
+
+    wrapper.setProps({listNotifications: listNotifications});
+    expect(renderMock.mock.calls.length).toEqual(0);
+
+    renderMock.mockRestore();
+  });
+
+  it('does rerender when updating the props with a bigger list', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'test1' }
+    ];
+
+    const biggerList = [
+      ...listNotifications,
+      { id: 2, type: 'urgent', value: 'test2' }
+    ];
+
+    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+    const renderMock = jest.spyOn(wrapper.instance(), 'render');
+
+    wrapper.setProps({listNotifications: biggerList});
+    expect(renderMock.mock.calls.length).toEqual(1);
+
+    renderMock.mockRestore();
+  });
 });
