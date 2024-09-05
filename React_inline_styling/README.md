@@ -10,6 +10,8 @@ Topics Covered :
 
 Table of Contents :
 - [0. Inline styling](#0-inline-styling)
+- [1. install Aphrodite](#1-install-aphrodite)
+- [2. Conditionally applying style](#2-conditionally-applying-style)
 
 ## 0. Inline styling
 - Copy over the `task_5` directory from the `0x04. React components` project (We’ll be using it as the base for this project)
@@ -27,5 +29,84 @@ Table of Contents :
 **Requirement:**
 - Even if the modification is small, make sure that your test suites are still passing. Especially the file `CourseListRow.test.js`
 - File: `task_0/dashboard/src/CourseList/CourseListRow.js, task_0/dashboard/src/CourseList/CourseListRow.test.js`
+
+<sub>[Return to top](#react_inline_styling)</sub>
+
+## 1. install Aphrodite
+Install Aphrodite using npm with:
+
+`npm install --save aphrodite`
+
+**Modify the `App` component in `task_1/dashboard/src/App/App.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the body and the footer within the file
+- Delete the file `App.css` and the import
+
+**Modify the `BodySectionWithMarginBottom` component in `task_1/dashboard/src/BodySection/BodySectionWithMarginBottom.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the margin within the file
+- Delete the file `BodySection.css` and the import
+
+**Modify the `CourseList` component in `task_1/dashboard/src/CourseList/CourseList.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the list within the file
+- Remove the styling for the list within the `CourseList.css` file
+
+**Modify the `Header` component in `task_1/dashboard/src/Header/Header.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the logo and the header within the file
+- Delete the file `Header.css` and the import
+
+**Modify the `Login` component in `task_1/dashboard/src/Login/Login.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the margin within the file
+- Delete the file `Login.css` and the import
+
+**Modify the `Notifications` component in `task_1/dashboard/src/Notifications/Notifications.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the notifications panel within the file
+- Remove the styling for the notifications panel from the `Notifications.css`
+
+**Make sure the test suites are still passing!**
+
+**Tips:**
+- Look into using `StyleSheetTestUtils.suppressStyleInjection` at the top of your test file, to prevent issues with style injections
+
+**Requirements:**
+- At this point, the UI should look exactly the same with the inline styling as it was with the CSS files
+- File: `task_1/dashboard/src/App/App.js, task_1/dashboard/src/BodySection/BodySectionWithMarginBottom.js, task_1/dashboard/src/CourseList/CourseList.js, task_1/dashboard/src/Header/Header.js, task_1/dashboard/src/Login/Login.js, task_1/dashboard/src/Notifications/Notifications.js, task_1/dashboard/src/App/App.test.js,task_1/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js, task_1/dashboard/src/CourseList/CourseList.test.js, task_1/dashboard/src/Header/Header.test.js, task_1/dashboard/src/Login/Login.test.js, task_1/dashboard/src/Notifications/Notifications.test.js`
+
+<sub>[Return to top](#react_inline_styling)</sub>
+
+## 2. Conditionally applying style
+
+**Modify the `NotificationItem` component in `task_2/dashboard/src/Notifications/NotificationItem.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the urgent and default items
+- Using condition, apply the styling to the `li` element
+- Delete the `Notifications.css` file and remove any import
+
+**Modify the `NotificationItem.test` suite in `task_2/dashboard/src/Notifications/NotificationItem.test.js`:**
+- Make sure that tests are still passing
+
+**Modify the `CourseListRow` component in `task_2/dashboard/src/CourseList/CourseListRow.js`:**
+- Modify the component to use Aphrodite within the js file
+- Define the styling for the different type of rows (default rows, header rows)
+- Define the styling for the different type of `th` elements
+- Delete the `CourseList.css` file and remove any import
+
+**Modify the `CourseListRow.test` suite in `task_2/dashboard/src/CourseList/CourseListRow.test.js`:**
+- Make sure that tests are still passing
+- Test properties one by one if easier
+
+**Requirements:**
+- Use conditions as much as you can, do not repeat elements
+- At this point, the UI should look exactly the same with the inline styling as it was with the CSS files
+
+**Tips:**
+- You can either use conditions or use an array to apply the different styling. Conditions are usually more robust
+- Testing might become difficult with the different variations. Look into the Enzyme documentation for `render`, `contains`, `prop`, and `html`
+
+- File: `task_2/dashboard/src/Notifications/NotificationItem.js, task_2/dashboard/src/Notifications/NotificationItem.test.js, task_2/dashboard/src/CourseList/CourseListRow.js, task_2/dashboard/src/CourseList/CourseListRow.test.js`
 
 <sub>[Return to top](#react_inline_styling)</sub>
