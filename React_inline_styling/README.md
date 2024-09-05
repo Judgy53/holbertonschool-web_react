@@ -12,6 +12,7 @@ Table of Contents :
 - [0. Inline styling](#0-inline-styling)
 - [1. install Aphrodite](#1-install-aphrodite)
 - [2. Conditionally applying style](#2-conditionally-applying-style)
+- [3. Responsive design](#3-responsive-design)
 
 ## 0. Inline styling
 - Copy over the `task_5` directory from the `0x04. React components` project (We’ll be using it as the base for this project)
@@ -108,5 +109,35 @@ Install Aphrodite using npm with:
 - Testing might become difficult with the different variations. Look into the Enzyme documentation for `render`, `contains`, `prop`, and `html`
 
 - File: `task_2/dashboard/src/Notifications/NotificationItem.js, task_2/dashboard/src/Notifications/NotificationItem.test.js, task_2/dashboard/src/CourseList/CourseListRow.js, task_2/dashboard/src/CourseList/CourseListRow.test.js`
+
+<sub>[Return to top](#react_inline_styling)</sub>
+
+## 3. Responsive design
+Let’s make the application responsive to the screen size using media queries. We are going to only focus on large screen and screens with a width under 900px
+
+**Modify the component `Login` in `task_3/dashboard/src/Login/Login.js`:**
+- Make sure that a label and an input are on each line
+- Make sure that the button is on a new line
+- The screen should look like the image below:
+
+![](previews/3-login.png)
+
+**Modify the component `Notifications` in `task_3/dashboard/src/Notifications/Notifications.js`:**
+- When the panel is open, it should take over the entire screen
+- There should be no padding because of the `ul` element
+- The font size of the text should be 20px
+
+**Modify the component `NotificationItem` in `task_3/dashboard/src/Notifications/NotificationItem.js`:**
+- The item should take the entire screen width
+- A black border should be displayed at the bottom
+- The font size of the text should be 20px
+- The padding for the item should be `10px 8px`
+
+**Requirements:**
+- When the notifications panel is open, the screen should look like the image below:
+
+![](previews/3-notifications.png)
+
+- File: `task_3/dashboard/src/Login/Login.js, task_3/dashboard/src/Notifications/Notifications.js, task_3/dashboard/src/Notifications/NotificationItem.js`
 
 <sub>[Return to top](#react_inline_styling)</sub>
