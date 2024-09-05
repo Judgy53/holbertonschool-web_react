@@ -2,17 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
-import { css, StyleSheet } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite';
+import './CourseList.css';
 
 class CourseList extends React.Component {
-  static propTypes = {
-    listCourses: PropTypes.arrayOf(PropTypes.shape(CourseShape))
-  }
-
-  static defaultProps = {
-    listCourses: []
-  }
-
   render() {
     const courseItems = this.props.listCourses.map(course =>
       <CourseListRow
@@ -40,10 +33,18 @@ class CourseList extends React.Component {
   }
 }
 
+CourseList.propTypes = {
+  listCourses: PropTypes.arrayOf(PropTypes.shape(CourseShape))
+}
+
+CourseList.defaultProps = {
+  listCourses: []
+}
+
 const styles = StyleSheet.create({
   courseList: {
     width: '100%',
-    border: '1px solid lightgray'
+    border: '1px solid lightgray',
   }
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite';
 
 function Login() {
   return (
@@ -10,7 +10,7 @@ function Login() {
         </label>
         <label className={css(styles.label)}>
           Password:
-          <input type="password" className={css(styles.input)}/>
+          <input type="password" className={css(styles.label)}/>
         </label>
         <button type="button">
           Ok
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    margin: '0 .5rem'
-  }
+    margin: '0 .5rem',
+  },
 });
 
 export default Login;

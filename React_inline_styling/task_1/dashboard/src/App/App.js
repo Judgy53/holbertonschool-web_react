@@ -11,16 +11,6 @@ import { getLatestNotification } from '../utils/utils';
 import { StyleSheet, css } from 'aphrodite';
 
 class App extends React.Component {
-  static propTypes = {
-    isLoggedIn: PropTypes.bool,
-    logOut: PropTypes.func
-  }
-
-  static defaultProps = {
-    isLoggedIn: false,
-    logOut: () => { }
-  }
-
   constructor(props) {
     super(props);
     this.listCourses = [
@@ -77,7 +67,7 @@ class App extends React.Component {
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda suscipit ipsam a quos voluptates dolor voluptas, unde quis atque, rerum vitae laudantium eius architecto recusandae, harum repellat labore sed iusto.</p>
             </BodySection>
           </div>
-          <div className={css(styles.footer)}>
+          <div className="App-footer">
             <Footer></Footer>
           </div>
         </div>
@@ -86,21 +76,26 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func
+}
+
+App.defaultProps = {
+  isLoggedIn: false,
+  logOut: () => { }
+}
+
 const styles = StyleSheet.create({
   app: {
     fontFamily: 'Arial, Helvetica, sans-serif',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '95vh',
+    minHeight: '75vh',
   },
   body: {
     margin: '2.5rem',
     flexGrow: 1,
-  },
-  footer: {
-    borderTop: '3px solid #e0354b',
-    textAlign: 'center',
-    fontStyle: 'italic',
   }
 });
 
