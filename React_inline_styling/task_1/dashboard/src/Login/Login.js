@@ -10,7 +10,7 @@ function Login() {
         </label>
         <label className={css(styles.label)}>
           Password:
-          <input type="password" className={css(styles.input)}/>
+          <input type="password" className={css(styles.label)}/>
         </label>
         <button type="button">
           Ok
