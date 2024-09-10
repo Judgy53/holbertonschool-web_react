@@ -43,11 +43,11 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer() {
-    this.setState({displayDrawer: true});
+    this.setState({ displayDrawer: true });
   }
 
   handleHideDrawer() {
-    this.setState({displayDrawer: false});
+    this.setState({ displayDrawer: false });
   }
 
   componentDidMount() {
@@ -66,14 +66,15 @@ class App extends React.Component {
   }
 
   render() {
+    const { displayDrawer } = this.state;
     return (
       <>
         <Notifications
           listNotifications={this.listNotifications}
-          displayDrawer={this.state.displayDrawer}
+          displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer.bind(this)}
           handleHideDrawer={this.handleHideDrawer.bind(this)}
-          />
+        />
         <div className={css(styles.app)}>
           <Header></Header>
           <div className={css(styles.body)}>
