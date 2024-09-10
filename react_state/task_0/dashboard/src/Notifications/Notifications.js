@@ -20,9 +20,10 @@ class Notifications extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
+    const { listNotifications, displayDrawer } = this.props;
     return (
-      nextProps.listNotifications.length > this.props.listNotifications.length
-       || nextProps.displayDrawer != this.props.displayDrawer
+      nextProps.listNotifications.length > listNotifications.length
+      || nextProps.displayDrawer != displayDrawer
     );
   }
 
@@ -30,18 +31,14 @@ class Notifications extends React.Component {
     console.log(`Notification ${id} has been marked as read`);
   }
 
-
-  onClickMenuItem() {
-    this.props.handleDisplayDrawer();
-  }
-
   onClickCloseBtn() {
     console.log('Close button has been clicked');
-    this.props.handleHideDrawer();
   }
 
   render() {
-    const notificationItems = this.props.listNotifications.map(item =>
+    const { listNotifications, displayDrawer, handleDisplayDrawer, handleHideDrawer } = this.props;
+
+    const notificationItems = listNotifications.map(item =>
       <NotificationItem
         type={item.type}
         value={item.value}
@@ -53,9 +50,9 @@ class Notifications extends React.Component {
 
     return (
       <>
-        {this.props.displayDrawer
+        {displayDrawer
           ? <div className={css(styles.notifications)}>
-            <button type="button" aria-label="Close" className={css(styles.closeBtn)} onClick={this.onClickCloseBtn.bind(this)}>
+            <button type="button" aria-label="Close" className={css(styles.closeBtn)} onClick={handleHideDrawer}>
               x
             </button>
             <ul className={css(styles.ul)}>
@@ -65,7 +62,7 @@ class Notifications extends React.Component {
               }
             </ul>
           </div>
-          : <div className={css(styles.menuItem)} aria-label="Open" onClick={this.onClickMenuItem.bind(this)}>Your notifications</div>
+          : <div className={css(styles.menuItem)} aria-label="Open" onClick={handleDisplayDrawer}>Your notifications</div>
         }
       </>
     );
