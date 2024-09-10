@@ -79,9 +79,8 @@ describe('<App />', () => {
     });
 
     it('changes value to false when handleHideDrawer() is called', () => {
-      const instance = wrapper.instance();
-      instance.setState({displayDrawer: true});
-      instance.handleHideDrawer();
+      wrapper.setState({displayDrawer: true});
+      wrapper.instance().handleHideDrawer();
 
       expect(wrapper.state('displayDrawer')).toBe(false);
     });
