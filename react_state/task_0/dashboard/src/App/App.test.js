@@ -70,20 +70,20 @@ describe('<App />', () => {
     });
 
     it('has default value set to false', () => {
-      expect(wrapper.instance().state.displayDrawer).toBe(false);
+      expect(wrapper.state('displayDrawer')).toBe(false);
     });
 
     it('changes value to true when handleDisplayDrawer() is called', () => {
-      const instance = wrapper.instance();
-      instance.handleDisplayDrawer();
-      expect(instance.state.displayDrawer).toBe(true);
+      wrapper.instance().handleDisplayDrawer();
+      expect(wrapper.state('displayDrawer')).toBe(true);
     });
 
     it('changes value to false when handleHideDrawer() is called', () => {
       const instance = wrapper.instance();
       instance.setState({displayDrawer: true});
       instance.handleHideDrawer();
-      expect(instance.state.displayDrawer).toBe(false);
+
+      expect(wrapper.state('displayDrawer')).toBe(false);
     });
   });
 });
