@@ -40,6 +40,10 @@ class App extends React.Component {
     ];
 
     this.state = { displayDrawer: false };
+
+    this.keydown = this.keydown.bind(this);
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   handleDisplayDrawer() {
@@ -51,11 +55,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', this.keydown.bind(this));
+    window.addEventListener('keydown', this.keydown);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.keydown.bind(this));
+    window.removeEventListener('keydown', this.keydown);
   }
 
   keydown(e) {
@@ -72,8 +76,8 @@ class App extends React.Component {
         <Notifications
           listNotifications={this.listNotifications}
           displayDrawer={displayDrawer}
-          handleDisplayDrawer={this.handleDisplayDrawer.bind(this)}
-          handleHideDrawer={this.handleHideDrawer.bind(this)}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
         />
         <div className={css(styles.app)}>
           <Header></Header>
