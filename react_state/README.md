@@ -15,6 +15,7 @@ Table of Contents:
 - [0. Adding a local state for notifications](#0-adding-a-local-state-for-notifications)
 - [1. Controlled components and state callback](#1-controlled-components-and-state-callback)
 - [2. Context](#2-context)
+- [3. Context consumer \& advanced state](#3-context-consumer--advanced-state)
 
 ## 0. Adding a local state for notifications
 Using the previous project (`React inline styling`), we have modularized our React application without worrying about interactions and state, which is usually a recommended process of development. Now, our application is in a good place to start adding logic and state.
@@ -154,5 +155,46 @@ At this point, you should be able to login (remove Login component and show Cour
 - Don’t forget to clean unused state and props after refactoring
 - Don’t forget to set the `propTypes` and `defaultProps` for any new prop
 - File: `task_2/dashboard/src/App/AppContext.js, task_2/dashboard/src/App/App.js, task_2/dashboard/src/Login/Login.js, task_2/dashboard/src/Header/Header.js, task_2/dashboard/src/Header/Header.test.js, task_2/dashboard/src/App/App.test.js`
+
+<sub>[Return to top](#react_state)</sub>
+
+## 3. Context consumer & advanced state
+**Context consumer: modify the Footer component in `task_3/dashboard/src/Footer/Footer.jsx`**
+- Without making the component a Class, make the component subscribe to the context changes
+- When the user is logged in, display a new paragraph containing a link with the text `Contact us`
+
+**Modify the test suite in `task_3/dashboard/src/Footer/Footer.spec.js`:**
+- Refactor the test to make them work correctly with the changes
+- Add a test to verify that the link is not displayed when the user is logged out within the context
+- Add a test to verify that the link is displayed when the user is logged in within the context
+
+**Advanced state: modify the `App` container in `task_3/dashboard/src/App/App.jsx`:**
+- Set the `listNotifications` within the state
+- Create a function `markNotificationAsRead`. It accepts an `id` (number) in argument. When the function is called, it remove the notification with that id from the list of notifications within the state
+- Pass the list of notifications to the `Notifications` component using the state
+- Pass the newly created function to the `Notifications` component
+
+**Modify the test suite in `task_3/dashboard/src/App/App.spec.js`:**
+- Add a test to verify that `markNotificationAsRead` works as intended. You can for example set the state with a mock list of notifications, then call the function and verify that the state of the container has been updated correctly
+
+**Modify the `Notifications` container in `task_3/dashboard/src/Notifications/Notifications.jsx`:**
+- Refactor the code to delete the function `markAsRead`, we can now use the real one
+- Refactor the code to delete the `shouldComponentUpdate`, the component is only using prop and state, and you should be able to optimize the performance with `PureComponent`
+- Use the newly created function `markNotificationAsRead` to mark a notification as read
+- Define the prop type and the default for `markNotificationAsRead`
+
+**Modify the test suite in `task_3/dashboard/src/Notifications/Notifications.spec.js`:**
+- Refactor the tests to match the new container
+
+**Checkpoint**
+
+Take a moment to test your application. At this point:
+- When you log in, you should be able to see a new footer
+- When you display the panel of notifications, you should each of them disappear on click
+
+**Requirements:**
+- Don’t forget to clean unused state and props after refactoring
+- Don’t forget to set the `propTypes` and `defaultProps` for any new prop
+- File: `task_3/dashboard/src/Footer/Footer.js, task_3/dashboard/src/Footer/Footer.test.js, task_3/dashboard/src/App/App.js, task_3/dashboard/src/App/App.test.js, task_3/dashboard/src/Notifications/Notifications.test.js`
 
 <sub>[Return to top](#react_state)</sub>
