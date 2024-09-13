@@ -16,6 +16,7 @@ Table of Contents:
 - [1. Controlled components and state callback](#1-controlled-components-and-state-callback)
 - [2. Context](#2-context)
 - [3. Context consumer \& advanced state](#3-context-consumer--advanced-state)
+- [4. Introduction to react hook](#4-introduction-to-react-hook)
 
 ## 0. Adding a local state for notifications
 Using the previous project (`React inline styling`), we have modularized our React application without worrying about interactions and state, which is usually a recommended process of development. Now, our application is in a good place to start adding logic and state.
@@ -196,5 +197,18 @@ Take a moment to test your application. At this point:
 - Don’t forget to clean unused state and props after refactoring
 - Don’t forget to set the `propTypes` and `defaultProps` for any new prop
 - File: `task_3/dashboard/src/Footer/Footer.js, task_3/dashboard/src/Footer/Footer.test.js, task_3/dashboard/src/App/App.js, task_3/dashboard/src/App/App.test.js, task_3/dashboard/src/Notifications/Notifications.test.js`
+
+<sub>[Return to top](#react_state)</sub>
+
+## 4. Introduction to react hook
+**Using React Hooks, modify the `CourseListRow` component in `task_4/dashboard/src/CourseList/CourseListRow.jsx`:**
+- Add a new style named `rowChecked` with the background color `#e6e4e4`
+- When the row is a simple row, add a checkbox within the first cell
+- When the user checks the box, the styling of the row should use `rowChecked`
+
+**Tips & Requirements:**
+- Make sure that the checkbox of each row is correctly checked or unchecked after the user interaction
+- Do not modify the component to a Class. You need to use the React Hook
+- File: `task_4/dashboard/src/CourseList/CourseListRow.js`
 
 <sub>[Return to top](#react_state)</sub>
