@@ -14,6 +14,7 @@ Topics Covered:
 Table of Contents:
 - [0. Adding a local state for notifications](#0-adding-a-local-state-for-notifications)
 - [1. Controlled components and state callback](#1-controlled-components-and-state-callback)
+- [2. Context](#2-context)
 
 ## 0. Adding a local state for notifications
 Using the previous project (`React inline styling`), we have modularized our React application without worrying about interactions and state, which is usually a recommended process of development. Now, our application is in a good place to start adding logic and state.
@@ -88,5 +89,70 @@ At this point, after reloading the app, you should be able to show / hide the no
 - Make sure that the button is always enabled when the two inputs are not empty. And make sure that the button is always disabled when one of the input’s value is empty
 - When running, there should not be any lint error in the console
 - File: `task_1/dashboard/src/Login/Login.js, task_1/dashboard/src/Login/Login.test.js`
+
+<sub>[Return to top](#react_state)</sub>
+
+## 2. Context
+**Create a simple React Context in `task_2/dashboard/src/App/AppContext.js`**
+- Define a default user object, containing `email`, `password`, and `isLoggedIn`
+- Define a default `logOut` function
+- Create a React context containing a `user` object and a `logOut` function. Set both default values using the previously created elements
+
+**Create the local state for the App in `task_2/dashboard/src/App/App.js`**
+- Modify the local state of the App container by adding a `user` object and `logOut` function. Set the default (or empty) values using the ones you previously created for the context
+
+**Create the login and logout functions in the `App` container in `task_2/dashboard/src/App/App.js` and use them**
+- Create a `logIn` function that takes as argument `email` and `password`. When the function is called, update the user object in the local state. Set the `email` and `password`. Set the `isLoggedIn` value to `true`
+- Modify the `logOut` function to reset the value of the `user` object in the local state
+- Remove the two props `isLoggedIn` and `logOut` from the App, they will now be used through the state
+- Refactor the render method to use the objects from the state to display the `CourseList` or the `Login` components
+- Pass the new `logIn` function to the `Login` component
+
+**in `task_2/dashboard/src/Login/Login.js`**
+- Remove from the state the `isLoggedIn` property, since we don’t use it anymore
+- Modify the `handleLoginSubmit` to call the newly created `logIn` function
+
+**Checkpoint**
+
+Take a moment to test your application. At this point, you should be able to login inside the app:
+- Enter a few letters to the email and the password inputs, and click on the submit button. You should see the list of courses and the login component should be unmounted.
+- Verify that the Notifications panel is still working correctly. You should be able to show/hide the panel by clicking on the top right link and the close button.
+
+**Setting the context in `task_2/dashboard/src/App/App.js`:**
+- In the `App` container, wrap the entire app with the `AppContext` created earlier using the `provider` element. Set the value to the `user` and `logOut` function using the local state
+
+**Modify the `Header` component in `task_2/dashboard/src/Header/Header.js`:**
+- Modify the `Header` to inherit the context using the `ContextType` API
+- Add a new line under the header, that is only displayed when the value `isLoggedIn` in the `user` object within the context is `true`
+    - This section should display “Welcome **email** (_logout_)”
+    - Add the id `logoutSection` to the section
+    - Clicking on the `logout` link, should call the `logOut` function included within the context
+
+At this point, you should be able to login (remove Login component and show CourseList component) and logout within the map (remove CourseList component, show Login component, show new header section)
+
+**Create the tests!**
+
+**in `task_2/dashboard/src/Header/Header.test.js`**
+- Make sure the current tests pass correctly
+- Add a test that mounts the `Header` component with a default context value. Verify that the `logoutSection` is not created
+- Add a test that mounts the `Header` component with a user defined (`isLoggedIn` is `true` and an email is set). Verify that the `logoutSection` is created
+- Add a test that mounts the `Header` component with a user defined (`isLoggedIn` is `true` and an email is set) and the `logOut` is linked to a spy. Verify that clicking on the link is calling the spy
+
+**in `task_2/dashboard/src/App/App.test.js`**
+- Refactor the previous tests to not use props but state instead
+- Refactor the test checking if `logOut` is being called by verifying if the state is updated correctly instead
+- Create a test to verify that the `logIn` function updates the state correctly
+- Create a test to verify that the `logOut` function updates the state correctly
+
+**Tips:**
+- Remember that function components can not use the context, you might need to convert the `Header` function component to a Class
+- Unfortunately, Enzyme does not fully support the newly created Static Context API of React. Therefore do not use the `setContext` API of Enzyme since it is not compatible. Instead wrap the component using the `Context.Provider` to pass different context values
+
+**Requirements:**
+- Be careful that Context is using reference identity to determine when to re-render. Don’t create directly an object within the Provider value
+- Don’t forget to export elements that are going to be reused through the app (e.g default user)
+- Don’t forget to clean unused state and props after refactoring
+- Don’t forget to set the `propTypes` and `defaultProps` for any new prop
+- File: `task_2/dashboard/src/App/AppContext.js, task_2/dashboard/src/App/App.js, task_2/dashboard/src/Login/Login.js, task_2/dashboard/src/Header/Header.js, task_2/dashboard/src/Header/Header.test.js, task_2/dashboard/src/App/App.test.js`
 
 <sub>[Return to top](#react_state)</sub>
