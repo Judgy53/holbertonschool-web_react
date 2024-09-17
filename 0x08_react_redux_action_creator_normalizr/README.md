@@ -15,6 +15,7 @@ Table of Contents:
 - [1. Normalize a nested JSON](#1-normalize-a-nested-json)
 - [2. Filter a normalized Schema](#2-filter-a-normalized-schema)
 - [3. Create actions for the course list](#3-create-actions-for-the-course-list)
+- [4. Create actions for the UI](#4-create-actions-for-the-ui)
 
 ## 0. Read data from a JSON
 Reuse the latest dashboard project you worked on in the React course `0x06-React_state`
@@ -56,6 +57,8 @@ Requirements:
 - You can use any loop function to go through the array
 - All the tests in the project should pass
 - File: `task_0/dashboard/src/schema/notifications.js, task_0/dashboard/src/schema/notifications.test.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
 
 ## 1. Normalize a nested JSON
 Copy over `dashboard` from the previous task into a `task_1` directory at the root of the project
@@ -123,6 +126,8 @@ Requirements:
 - All the tests in the project should pass
 - File: `task_1/dashboard/src/schema/notifications.js, task_1/dashboard/src/schema/notifications.test.js`
 
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
+
 ## 2. Filter a normalized Schema
 Copy the contents of `dashboard` from the `task_1` directory into a `task_2` directory at the root of the project
 
@@ -134,6 +139,8 @@ Requirements:
 - You should not have to modify the test, and the test should pass correctly
 - All the tests in the project should pass
 - File: `task_2/dashboard/src/schema/notifications.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
 
 ## 3. Create actions for the course list
 Copy the `dashboard` folder from the `task_2` directory into a directory named `task_3`
@@ -161,3 +168,38 @@ In a file named `courseActionCreators.test.js`, write a test for the `selectCour
 Write a test for the `unSelectCourse` action. Calling the creator with 1 as argument should return: `{ type: UNSELECT_COURSE, index: 1 }`
 
 - File: `task_3/dashboard/src/actions/courseActionCreators.js, task_3/dashboard/src/actions/courseActionCreators.test.js, task_3/dashboard/src/actions/courseActionTypes.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
+
+## 4. Create actions for the UI
+Copy the dashboard folder from `task_3` into a directory labeled `task_4`
+
+In `src/actions/uiActionTypes.js`, create four action types:
+
+e.g . `export const LOGIN = "LOGIN"`
+
+### Create the action types:
+- `LOGIN`
+- `LOGOUT`
+- `DISPLAY_NOTIFICATION_DRAWER`
+- `HIDE_NOTIFICATION_DRAWER`
+
+They will be used to define when a user is logging in, logging out, and display / hide the notifications drawer
+
+### Create the action creator:
+
+In a file named `uiActionCreators.js`, the goal of this section is to create four action creators that will send the four types we previously created. Remember to import all the types from `uiActionTypes` in this file.
+- The function `login` will accept `email` and `password` as arguments. It will return the action with `LOGIN` as a type and the `user` object:
+  ```json
+  { user : { email, password } }
+  ```
+- The function `logout` will create the action with the type `LOGOUT`
+- The function `displayNotificationDrawer` will create the action with the type `DISPLAY_NOTIFICATION_DRAWER`
+- The function `hideNotificationDrawer` will create the action with the type `HIDE_NOTIFICATION_DRAWER`
+
+### Test the action creators:
+
+In a file named `uiActionCreators.test.js`, write a test for each of the action creator you wrote previously.
+- File: `task_4/dashboard/src/actions/uiActionTypes.js, task_4/dashboard/src/actions/uiActionCreators.js, task_4/dashboard/src/actions/uiActionCreators.test.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
