@@ -14,6 +14,7 @@ Table of Contents:
 - [0. Read data from a JSON](#0-read-data-from-a-json)
 - [1. Normalize a nested JSON](#1-normalize-a-nested-json)
 - [2. Filter a normalized Schema](#2-filter-a-normalized-schema)
+- [3. Create actions for the course list](#3-create-actions-for-the-course-list)
 
 ## 0. Read data from a JSON
 Reuse the latest dashboard project you worked on in the React course `0x06-React_state`
@@ -133,3 +134,30 @@ Requirements:
 - You should not have to modify the test, and the test should pass correctly
 - All the tests in the project should pass
 - File: `task_2/dashboard/src/schema/notifications.js`
+
+## 3. Create actions for the course list
+Copy the `dashboard` folder from the `task_2` directory into a directory named `task_3`
+
+Create a new folder named `actions`
+
+### Create the action types:
+
+In a file named `courseActionTypes.js`, create two action types:
+- `SELECT_COURSE`
+- `UNSELECT_COURSE`
+
+They will be used to define if a user selected or unselected a specific course
+
+### Create the action creators:
+
+In a file named `courseActionCreators.js`, create two action creators that will send the two types we previously created:
+- The function `selectCourse` will accept `index` as argument
+- The function `unSelectCourse` will accept `index` as argument
+
+### Test the action creators:
+
+In a file named `courseActionCreators.test.js`, write a test for the `selectCourse` action. Calling the creator with 1 as argument should return: `{ type: SELECT_COURSE, index: 1 }`
+
+Write a test for the `unSelectCourse` action. Calling the creator with 1 as argument should return: `{ type: UNSELECT_COURSE, index: 1 }`
+
+- File: `task_3/dashboard/src/actions/courseActionCreators.js, task_3/dashboard/src/actions/courseActionCreators.test.js, task_3/dashboard/src/actions/courseActionTypes.js`
