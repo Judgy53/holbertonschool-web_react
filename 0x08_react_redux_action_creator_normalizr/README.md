@@ -13,6 +13,7 @@ Topics Covered :
 Table of Contents:
 - [0. Read data from a JSON](#0-read-data-from-a-json)
 - [1. Normalize a nested JSON](#1-normalize-a-nested-json)
+- [2. Filter a normalized Schema](#2-filter-a-normalized-schema)
 
 ## 0. Read data from a JSON
 Reuse the latest dashboard project you worked on in the React course `0x06-React_state`
@@ -120,3 +121,15 @@ Requirements:
 - You must export the list of notifications using a Normalizr’s `normalize`
 - All the tests in the project should pass
 - File: `task_1/dashboard/src/schema/notifications.js, task_1/dashboard/src/schema/notifications.test.js`
+
+## 2. Filter a normalized Schema
+Copy the contents of `dashboard` from the `task_1` directory into a `task_2` directory at the root of the project
+
+Modify the function `getAllNotificationsByUser` to use the normalized dataset
+
+Requirements:
+- You should only use one loop at this point
+- You should not use `Object.keys`
+- You should not have to modify the test, and the test should pass correctly
+- All the tests in the project should pass
+- File: `task_2/dashboard/src/schema/notifications.js`
