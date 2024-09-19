@@ -5,6 +5,7 @@ Topics Covered :
 
 Table of Contents:
 - [0. Write a basic reducer](#0-write-a-basic-reducer)
+- [1. Use Immutable for the UI Reducer](#1-use-immutable-for-the-ui-reducer)
 
 ## 0. Write a basic reducer
 - Reuse the latest dashboard project you worked on in the React course `0x08-React_Redux_action_creator+normalizr`
@@ -40,5 +41,23 @@ In a file named `reducers/uiReducer.test.js`, define the test suite for our simp
 - You must use the spread operator to change the state
 - All the tests in the project should pass
 - File: `task_0/dashboard/src/reducers/uiReducer.js, task_0/dashboard/src/reducers/uiReducer.test.js`
+
+<sub>[Return to top](#react_redux_reducer_selector)</sub>
+
+## 1. Use Immutable for the UI Reducer
+Now that you have set up a basic reducer, let’s reuse what we learned in the Immutable module and apply it to that reducer:
+- Install `Immutable.js` within the project
+- Update the `uiReducer.js` file to use `Map` from `Immutable.js`
+- Update the different part of the reducer function to use `set` from `Map`
+- Update the test suite, so it takes into account the changes
+
+**Tips:**
+- You can use the `toJS` function within your tests for an easy comparison
+- Remember that `Immutable.js` always return a new Map after a modification
+
+**Requirements:**
+- For better performances, do not use any `fromJS`, `toJS` function within the reducer
+- All the tests in the project should pass
+- File: `task_1/dashboard/src/reducers/uiReducer.js, task_1/dashboard/src/reducers/uiReducer.test.js`
 
 <sub>[Return to top](#react_redux_reducer_selector)</sub>
