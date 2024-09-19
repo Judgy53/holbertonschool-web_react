@@ -17,6 +17,7 @@ Table of Contents:
 - [3. Create actions for the course list](#3-create-actions-for-the-course-list)
 - [4. Create actions for the UI](#4-create-actions-for-the-ui)
 - [5. Create actions for the notification list](#5-create-actions-for-the-notification-list)
+- [6. Bound the actions](#6-bound-the-actions)
 
 ## 0. Read data from a JSON
 Reuse the latest dashboard project you worked on in the React course `0x06-React_state`
@@ -251,5 +252,24 @@ Write a test for the `setNotificationFilter` action. Calling the creator with on
 ```
 
 - File: `task_5/dashboard/src/actions/notificationActionTypes.js, task_5/dashboard/src/actions/notificationActionCreators.js, task_5/dashboard/src/actions/notificationActionCreators.test.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
+
+## 6. Bound the actions
+Modify the Course actions creators:
+- bound the `selectCourse` action creator
+- bound the `unSelectCourse` action creator
+
+Modify the Notification actions creators:
+- bound the `markAsAread` action creator
+- bound the `setNotificationFilter` action creator
+
+Modify the UI actions creators:
+- bound the `login` action creator
+- bound the `logout` action creator
+- bound the `displayNotificationDrawer` action creator
+- bound the `hideNotificationDrawer` action creator
+
+- File: `task_6/dashboard/src/actions/courseActionCreators.js, task_6/dashboard/src/actions/notificationActionCreators.js, task_6/dashboard/src/actions/uiActionCreators.js`
 
 <sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
