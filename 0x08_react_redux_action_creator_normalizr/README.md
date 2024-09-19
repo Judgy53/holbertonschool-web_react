@@ -16,6 +16,7 @@ Table of Contents:
 - [2. Filter a normalized Schema](#2-filter-a-normalized-schema)
 - [3. Create actions for the course list](#3-create-actions-for-the-course-list)
 - [4. Create actions for the UI](#4-create-actions-for-the-ui)
+- [5. Create actions for the notification list](#5-create-actions-for-the-notification-list)
 
 ## 0. Read data from a JSON
 Reuse the latest dashboard project you worked on in the React course `0x06-React_state`
@@ -201,5 +202,54 @@ In a file named `uiActionCreators.js`, the goal of this section is to create fou
 
 In a file named `uiActionCreators.test.js`, write a test for each of the action creator you wrote previously.
 - File: `task_4/dashboard/src/actions/uiActionTypes.js, task_4/dashboard/src/actions/uiActionCreators.js, task_4/dashboard/src/actions/uiActionCreators.test.js`
+
+<sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
+
+## 5. Create actions for the notification list
+Copy `dashboard` from the `task_4` directory into `task_5`
+
+### Create the action types
+
+In `src/actions/notificationActionTypes.js`, create two action types:
+- `MARK_AS_READ`
+- `SET_TYPE_FILTER`
+
+### Create the filter states
+
+In `src/actions/notificationActionTypes.js`, create a constant named `NotificationTypeFilters`, that will contain the two filter states:
+- `DEFAULT`
+- `URGENT`
+
+They will be used when the user interacts with the notification drawer
+
+### Create the action creator
+
+Import the action types you just created in `src/actions/notificationActionTypes.js`
+
+In a file named `notificationActionCreators.js`, create two action creators that will send the two action types we previously created:
+- The function `markAsread` will accept `index` as argument
+- The function `setNotificationFilter` will accept `filter` as argument
+
+### Test the action creators
+
+Import the action types, `NotificationTypeFilters`, and the action creators into `src/actions/notificationActionCreators.test.js`
+
+In this file, write a test for the `markAsread` action. Calling the creator with 1 as an argument should return:
+```json
+{
+  type: MARK_AS_READ,
+  index: 1
+}
+```
+
+Write a test for the `setNotificationFilter` action. Calling the creator with one of the filters from `NotificationTypeFilters` as an argument should return:
+```json
+{
+  type: SET_TYPE_FILTER,
+  filter: "DEFAULT"
+}
+```
+
+- File: `task_5/dashboard/src/actions/notificationActionTypes.js, task_5/dashboard/src/actions/notificationActionCreators.js, task_5/dashboard/src/actions/notificationActionCreators.test.js`
 
 <sub>[Return to top](#react-redux-action-creatornormalizr)</sub>
