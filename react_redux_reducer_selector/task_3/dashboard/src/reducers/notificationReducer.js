@@ -18,10 +18,10 @@ export default function notificationReducer(state = initialState, action = { typ
     case ActionTypes.MARK_AS_READ:
       return {
         ...state,
-        notifications: state.notifications.map(n => ({
+        notifications: state.notifications.map(notif => notif.id === action.index ? {
           ...n,
-          isRead: n.id === action.index ? true : n.isRead
-        }))
+          isRead: true
+        } : notif)
       }
     case ActionTypes.SET_TYPE_FILTER:
       return {

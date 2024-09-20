@@ -6,7 +6,7 @@ describe('notificationReducer()', () => {
     expect(notificationReducer()).toEqual(initialState);
   });
 
-  it('returns the action data when action `FETCH_NOTIFICATIONS_SUCCESS` is passed', () => {
+  it('returns the correct state when action `FETCH_NOTIFICATIONS_SUCCESS` is passed', () => {
     const data = [
       { id: 1, type: "default", value: "New course available" },
       { id: 2, type: "urgent", value: "New resume available" },
@@ -16,7 +16,7 @@ describe('notificationReducer()', () => {
     expect(notificationReducer(initialState, { type: FETCH_NOTIFICATIONS_SUCCESS, data })).toEqual(expected);
   });
 
-  it('returns the correct data when action `MARK_AS_READ` is passed', () => {
+  it('returns the correct state when action `MARK_AS_READ` is passed', () => {
     const state = {
       notifications: [
         { id: 1, name: 'ES6', credit: 60, isRead: false },
@@ -25,11 +25,11 @@ describe('notificationReducer()', () => {
       ],
       filter: NotificationTypeFilters.DEFAULT
     }
-    const expected = { ...state, notifications: state.notifications.map(d => ({ ...d, isRead: d.id == 2 })) };
+    const expected = { ...state, notifications: state.notifications.map(notif => notif.id == 2 ? { ...notif, isRead: notif.id == 2 } : notif) };
     expect(notificationReducer(state, { type: MARK_AS_READ, index: 2 })).toEqual(expected);
   });
 
-  it('returns the correct data when action `SET_TYPE_FILTER` is passed', () => {
+  it('returns the correct state when action `SET_TYPE_FILTER` is passed', () => {
     const state = {
       notifications: [
         { id: 1, name: 'ES6', credit: 60, isRead: false },
