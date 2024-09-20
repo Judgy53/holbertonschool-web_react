@@ -7,6 +7,7 @@ Table of Contents:
 - [0. Write a basic reducer](#0-write-a-basic-reducer)
 - [1. Use Immutable for the UI Reducer](#1-use-immutable-for-the-ui-reducer)
 - [2. Create a reducer for Courses](#2-create-a-reducer-for-courses)
+- [3. Create the reducer for notifications](#3-create-the-reducer-for-notifications)
 
 ## 0. Write a basic reducer
 - Reuse the latest dashboard project you worked on in the React course `0x08-React_Redux_action_creator+normalizr`
@@ -203,5 +204,153 @@ In a `courseReducer.test.js`, write a test suite for the new reducer. Define the
 - Try to make the update of object as efficient as possible, for example you can use ES6 Map
 - All the tests in the project should pass
 - File: `task_2/dashboard/src/actions/courseActionTypes.js, task_2/dashboard/src/reducers/courseReducer.js, task_2/dashboard/src/reducers/courseReducer.test.js`
+
+<sub>[Return to top](#react_redux_reducer_selector)</sub>
+
+## 3. Create the reducer for notifications
+**Create a load action**
+
+In the `notificationActionTypes` file, create a new action corresponding to when the API returns the list of notifications. You can name it `FETCH_NOTIFICATIONS_SUCCESS`
+
+**Create the notifications reducer and default state**
+
+In a file `notificationReducer.js`, write a reducer function. The default state should be an object with:
+- `notifications`, which will store the list of notifications
+- `filter`, which will be the attribute storing which filter is selected
+
+**Define the `FETCH_NOTIFICATIONS_SUCCESS` action**
+
+When the action creator sends the action `FETCH_NOTIFICATIONS_SUCCESS`, it also sends the list of notifications in a data attribute. The action would look like:
+```js
+{
+  type: FETCH_NOTIFICATIONS_SUCCESS,
+  data: [
+    {
+      id: 1,
+      type: "default",
+      value: "New course available"
+    },
+    {
+      id: 2,
+      type: "urgent",
+      value: "New resume available"
+    },
+    {
+      id: 3,
+      type: "urgent",
+      value: "New data available"
+    }
+  ]
+}
+```
+
+When updating the state of the reducer, you should also set the attribute `isRead` to false for every item in the list. The expected data from the reducer should be:
+```js
+{
+  filter: "DEFAULT",
+  notifications: [
+    {
+      id: 1,
+      isRead: false,
+      type: "default",
+      value: "New course available"
+    },
+    {
+      id: 2,
+      isRead: false,
+      type: "urgent",
+      value: "New resume available"
+    },
+    {
+      id: 3,
+      isRead: false,
+      type: "urgent",
+      value: "New data available"
+    }
+  ]
+}
+```
+
+**Define the `MARK_AS_READ` action**
+
+When the action creator sends the action `MARK_AS_READ`, it also sends an index corresponding to the id of the notification to update. The action would look like:
+```js
+{
+  type: MARK_AS_READ,
+  index: 2
+}
+```
+
+The expected data from the reducer should be:
+```js
+{
+  filter: "DEFAULT",
+  notifications: [
+    {
+      id: 1,
+      isRead: false,
+      type: "default",
+      value: "New course available"
+    },
+    {
+      id: 2,
+      isRead: true,
+      type: "urgent",
+      value: "New resume available"
+    },
+    {
+      id: 3,
+      isRead: false,
+      type: "urgent",
+      value: "New data available"
+    }
+  ]
+}
+```
+
+**Define the `SET_TYPE_FILTER` action**
+
+When the action creator sends the action `SET_TYPE_FILTER`, it also sends a filter attribute with either `DEFAULT` or `URGENT`. The action would look like:
+```js
+{
+  type: SET_TYPE_FILTER,
+  filter: "URGENT"
+}
+```
+
+The expected data from the reducer should be:
+```js
+{
+  filter: "URGENT",
+  notifications: [
+    {
+      id: 1,
+      isRead: false,
+      type: "default",
+      value: "New course available"
+    },
+    {
+      id: 2,
+      isRead: false,
+      type: "urgent",
+      value: "New resume available"
+    },
+    {
+      id: 3,
+      isRead: false,
+      type: "urgent",
+      value: "New data available"
+    }
+  ]
+}
+```
+
+**Tips:**
+- Use ES6 for this reducer, we can look at Immutable later
+
+**Requirements:**
+- Try to make the update of object as efficient as possible, for example you can use ES6 Map
+- All the tests in the project should pass
+- File: `task_3/dashboard/src/actions/notificationActionTypes.js, task_3/dashboard/src/reducers/notificationReducer.js, task_3/dashboard/src/reducers/notificationReducer.test.js`
 
 <sub>[Return to top](#react_redux_reducer_selector)</sub>
