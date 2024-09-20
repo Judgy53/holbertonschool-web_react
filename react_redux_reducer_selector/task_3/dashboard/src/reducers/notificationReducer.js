@@ -19,7 +19,7 @@ export default function notificationReducer(state = initialState, action = { typ
       return {
         ...state,
         notifications: state.notifications.map(notif => notif.id === action.index ? {
-          ...n,
+          ...notif,
           isRead: true
         } : notif)
       }
