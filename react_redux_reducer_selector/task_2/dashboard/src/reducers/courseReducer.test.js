@@ -7,13 +7,13 @@ describe('uiReducer()', () => {
   });
 
   it('returns the action data when action `FETCH_COURSE_SUCCESS` is passed', () => {
-    const data = [
+    const fetch_data = [
       { id: 1, name: 'ES6', credit: 60 },
       { id: 2, name: 'Webpack', credit: 20 },
       { id: 3, name: 'React', credit: 40 }
     ];
-    const expected = data.map(d => ({ ...d, isSelected: false }));
-    expect(courseReducer(initialState, { type: FETCH_COURSE_SUCCESS, data })).toEqual(expected);
+    const expected = fetch_data.map(course => ({ ...course, isSelected: false }));
+    expect(courseReducer(initialState, { type: FETCH_COURSE_SUCCESS, data: fetch_data })).toEqual(expected);
   });
 
   it('returns the correct data when action `SELECT_COURSE` is passed', () => {
@@ -22,7 +22,7 @@ describe('uiReducer()', () => {
       { id: 2, name: 'Webpack', credit: 20, isSelected: false },
       { id: 3, name: 'React', credit: 40, isSelected: false }
     ];
-    const expected = state.map(d => ({ ...d, isSelected: d.id == 2 }));
+    const expected = state.map(course => course.id === 2 ? { ...course, isSelected: true } : course);
     expect(courseReducer(state, { type: SELECT_COURSE, index: 2 })).toEqual(expected);
   });
 
@@ -32,7 +32,7 @@ describe('uiReducer()', () => {
       { id: 2, name: 'Webpack', credit: 20, isSelected: true },
       { id: 3, name: 'React', credit: 40, isSelected: true }
     ];
-    const expected = state.map(d => ({ ...d, isSelected: d.id != 2 }));
+    const expected = state.map(course => course.id === 2 ? { ...course, isSelected: false } : course);
     expect(courseReducer(state, { type: UNSELECT_COURSE, index: 2 })).toEqual(expected);
   });
 });
