@@ -13,6 +13,7 @@ Topics Covered:
 Table of Contents:
 - [0. Write mapStateToProps](#0-write-mapstatetoprops)
 - [1. Create a small store](#1-create-a-small-store)
+- [2. Test MapStateToProps](#2-test-mapstatetoprops)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -30,5 +31,29 @@ In the `index.js` file:
 - Create a store using `createStore` from Redux that would contain the `uiReducer` state
 - Implement a provider passing the store that you created to the main `App`
 - File: `task_0/dashboard/src/index.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 2. Test MapStateToProps
+Export the `mapStateToProps` function you created if you haven’t already, and in the `App.test.js` file:
+- Create a new suite to test the function
+- Create a test that verify that the function returns the right object when passing the
+
+```js
+let state = fromJS({
+  isUserLoggedIn: true
+});
+```
+
+Should return `{ isLoggedIn: true }`
+
+Tips:
+- At this point your app is not functional but you should be able to load the page without crashing
+- Remember that the state of uiReducer is using Map from Immutable
+
+Requirements:
+- No error should be displayed within the console
+- All the tests in the project should pass
+- File: `task_0/dashboard/src/App/App.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>

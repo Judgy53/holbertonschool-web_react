@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import App from './App/App';
 import { Provider } from 'react-redux';
+import App from './App/App';
+import uiReducer from './reducers/uiReducer';
 
 const store = createStore(uiReducer);
 

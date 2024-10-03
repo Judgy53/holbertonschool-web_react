@@ -1,14 +1,30 @@
-import { shallow } from 'enzyme';
-import App from './App';
+import { fromJS } from 'immutable';
+import configureStore from 'redux-mock-store';
+import { mount } from 'enzyme';
+import App, { mapStateToProps } from './App';
+import { Provider } from 'react-redux';
 
 describe('<App />', () => {
-  let wrapper;
+  const mockStore = configureStore();
+  const defaultState = fromJS({
+    isNotificationDrawerVisible: false,
+    isUserLoggedIn: false,
+    user: {}
+  });
+  let wrapper, store;
+
+  beforeEach(() => {
+    store = mockStore(defaultState);
+
+
+    wrapper = mount(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    ).find('App');
+  })
 
   describe('isLoggedIn = false', () => {
-    beforeEach(() => {
-      wrapper = shallow(<App />);
-    });
-
     it('renders without crashing', () => { });
 
     it('contains the Notifications component', () => {
@@ -33,26 +49,24 @@ describe('<App />', () => {
   });
 
   describe('isLoggedIn = true', () => {
-    beforeEach(() => {
-      wrapper = shallow(<App />);
-      wrapper.instance().logIn('a@a.com', 'azerty1234');
-    });
 
-    it('does not contain the Login component', () => {
-      expect(wrapper.find('Login')).toHaveLength(0);
-    });
-
-    it('contains the CourseList component', () => {
-      expect(wrapper.find('CourseList')).toHaveLength(1);
+    it('updated the state correctly', () => {
+      const email = 'a@a.com';
+      const password = 'azerty1234';
+      const expected = {
+        email,
+        password,
+        isLoggedIn: true
+      }
+      wrapper.instance().logIn(email, password);
+      expect(wrapper.state('user')).toEqual(expected);
     });
   });
 
   describe('logOut event', () => {
     it('calls logOut prop', () => {
       const logOutMock = jest.fn();
-      const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-
-      const wrapper = shallow(<App />);
+      const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
       wrapper.setState({ logOut: logOutMock });
 
       window.dispatchEvent(new KeyboardEvent('keydown', {
@@ -68,9 +82,6 @@ describe('<App />', () => {
   });
 
   describe('state.displayDrawer', () => {
-    beforeEach(() => {
-      wrapper = shallow(<App />);
-    });
 
     it('has default value set to false', () => {
       expect(wrapper.state('displayDrawer')).toBe(false);
@@ -82,7 +93,7 @@ describe('<App />', () => {
     });
 
     it('changes value to false when handleHideDrawer() is called', () => {
-      wrapper.setState({displayDrawer: true});
+      wrapper.setState({ displayDrawer: true });
       wrapper.instance().handleHideDrawer();
 
       expect(wrapper.state('displayDrawer')).toBe(false);
@@ -90,20 +101,28 @@ describe('<App />', () => {
   });
 
   describe('state.listNotifications', () => {
-    beforeEach(() => {
-      wrapper = shallow(<App />);
-    });
-
     it('removes a notification when markNotificationAsRead is called', () => {
       const listMock = [
         { id: 1, type: 'default', value: 'New course available' },
         { id: 2, type: 'urgent', value: 'New resume available' },
       ]
-      wrapper.setState({listNotifications: listMock});
+      wrapper.setState({ listNotifications: listMock });
 
       wrapper.instance().markNotificationAsRead(1);
       expect(wrapper.state('listNotifications')).toHaveLength(1);
       expect(wrapper.state('listNotifications').filter(n => n.id === 1)).toHaveLength(0);
     });
   })
+
+  describe('mapStateToProps', () => {
+    it('returns the right object when passing a state', () => {
+      const state = fromJS({
+        isUserLoggedIn: true
+      });
+      const expected = {
+        isLoggedIn: true
+      };
+      expect(mapStateToProps(state)).toEqual(expected);
+    });
+  });
 });
