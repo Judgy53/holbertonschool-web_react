@@ -12,6 +12,7 @@ Topics Covered:
 
 Table of Contents:
 - [0. Write mapStateToProps](#0-write-mapstatetoprops)
+- [1. Create a small store](#1-create-a-small-store)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -20,5 +21,14 @@ Within the `App/App.js` file:
 - Create a function named `mapStateToProps`. This should connect the `uiReducer` you created and the property `isLoggedIn` that your component is already using
 - Import `connect` from Redux, and connect the `mapStateToProps` to the component
 - File: `task_0/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 1. Create a small store
+In the `index.js` file:
+
+- Create a store using `createStore` from Redux that would contain the `uiReducer` state
+- Implement a provider passing the store that you created to the main `App`
+- File: `task_0/dashboard/src/index.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
