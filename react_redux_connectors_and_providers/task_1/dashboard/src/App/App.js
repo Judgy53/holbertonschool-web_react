@@ -1,15 +1,16 @@
+import { StyleSheet, css } from 'aphrodite';
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppContext, defaultUser, defaultLogOut } from './AppContext';
-import Notifications from '../Notifications/Notifications';
-import Header from '../Header/Header';
-import Login from '../Login/Login';
+import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import CourseList from '../CourseList/CourseList';
 import Footer from '../Footer/Footer';
-import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import BodySection from '../BodySection/BodySection';
+import Header from '../Header/Header';
+import Login from '../Login/Login';
+import Notifications from '../Notifications/Notifications';
 import { getLatestNotification } from '../utils/utils';
-import { StyleSheet, css } from 'aphrodite';
+import { AppContext, defaultLogOut, defaultUser } from './AppContext';
 
 class App extends React.Component {
   static contextType = AppContext;
@@ -89,7 +90,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { displayDrawer } = this.props;
+    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
     const { user, logOut, listNotifications } = this.state;
     const context = { user, logOut };
 
@@ -99,8 +100,8 @@ class App extends React.Component {
           listNotifications={listNotifications}
           markNotificationAsRead={this.markNotificationAsRead}
           displayDrawer={displayDrawer}
-          handleDisplayDrawer={this.handleDisplayDrawer}
-          handleHideDrawer={this.handleHideDrawer}
+          handleDisplayDrawer={displayNotificationDrawer}
+          handleHideDrawer={hideNotificationDrawer}
         />
         <div className={css(styles.app)}>
           <Header></Header>
@@ -144,6 +145,11 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer
+}
+
 export function mapStateToProps(state) {
   return {
     isLoggedIn: state.get('isUserLoggedIn'),
@@ -151,4 +157,5 @@ export function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

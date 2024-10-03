@@ -15,6 +15,7 @@ Table of Contents:
 - [1. Create a small store](#1-create-a-small-store)
 - [2. Test MapStateToProps](#2-test-mapstatetoprops)
 - [3. Update mapStateToProps](#3-update-mapstatetoprops)
+- [4. Connect your actions creators](#4-connect-your-actions-creators)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -64,6 +65,15 @@ In the `App.js` file:
 
 - Update the `mapStateToProps` function to also pass to the component the value for `displayDrawer`. It should be connected to the Reducer attribute `isNotificationDrawerVisible`
 - Update the render function of the component to use the value `displayDrawer` coming from the props instead of the state
+- File: `task_1/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 4. Connect your actions creators
+In the `App.js` file:
+- Connect to the component the actions creators `displayNotificationDrawer` and `hideNotificationDrawer`
+- You should use the simplified version for the `mapDispatchToProps`. No need to import `bindActionCreators`
+- Modify the render function of the component to use the functions passed within the props instead of the action within the Class component
 - File: `task_1/dashboard/src/App/App.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
