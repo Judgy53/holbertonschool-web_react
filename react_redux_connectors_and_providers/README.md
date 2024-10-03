@@ -14,6 +14,7 @@ Table of Contents:
 - [0. Write mapStateToProps](#0-write-mapstatetoprops)
 - [1. Create a small store](#1-create-a-small-store)
 - [2. Test MapStateToProps](#2-test-mapstatetoprops)
+- [3. Update mapStateToProps](#3-update-mapstatetoprops)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -55,5 +56,14 @@ Requirements:
 - No error should be displayed within the console
 - All the tests in the project should pass
 - File: `task_0/dashboard/src/App/App.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 3. Update mapStateToProps
+In the `App.js` file:
+
+- Update the `mapStateToProps` function to also pass to the component the value for `displayDrawer`. It should be connected to the Reducer attribute `isNotificationDrawerVisible`
+- Update the render function of the component to use the value `displayDrawer` coming from the props instead of the state
+- File: `task_1/dashboard/src/App/App.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
