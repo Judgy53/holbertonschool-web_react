@@ -81,25 +81,6 @@ describe('<App />', () => {
     });
   });
 
-  describe('state.displayDrawer', () => {
-
-    it('has default value set to false', () => {
-      expect(wrapper.state('displayDrawer')).toBe(false);
-    });
-
-    it('changes value to true when handleDisplayDrawer() is called', () => {
-      wrapper.instance().handleDisplayDrawer();
-      expect(wrapper.state('displayDrawer')).toBe(true);
-    });
-
-    it('changes value to false when handleHideDrawer() is called', () => {
-      wrapper.setState({ displayDrawer: true });
-      wrapper.instance().handleHideDrawer();
-
-      expect(wrapper.state('displayDrawer')).toBe(false);
-    });
-  });
-
   describe('state.listNotifications', () => {
     it('removes a notification when markNotificationAsRead is called', () => {
       const listMock = [
@@ -117,10 +98,13 @@ describe('<App />', () => {
   describe('mapStateToProps', () => {
     it('returns the right object when passing a state', () => {
       const state = fromJS({
-        isUserLoggedIn: true
+        isNotificationDrawerVisible: false,
+        isUserLoggedIn: true,
+        user: {}
       });
       const expected = {
-        isLoggedIn: true
+        isLoggedIn: true,
+        displayDrawer: false
       };
       expect(mapStateToProps(state)).toEqual(expected);
     });

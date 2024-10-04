@@ -17,6 +17,7 @@ Table of Contents:
 - [3. Update mapStateToProps](#3-update-mapstatetoprops)
 - [4. Connect your actions creators](#4-connect-your-actions-creators)
 - [5. Refactor your code](#5-refactor-your-code)
+- [6. Update your tests](#6-update-your-tests)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -87,5 +88,18 @@ In the `App.js` file:
 - Remove any binding in the constructor
 - You are now passing to your components props. You need to define `propTypes` and `defaultProps`
 - File: `task_1/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 6. Update your tests
+You can now refactor the `App.test.js` file:
+- You don’t need to test the functions `handleDisplayDrawer` and `handleHideDrawer` since everything is already tested using the Redux mechanism
+- You need to update the test you previously created to support the new attribute
+
+Tips:
+- At this point your app should be functional and able to display/hide the drawer using the Redux state
+- Remember that the state of `uiReducer` is using Map from Immutable
+
+- File: `task_1/dashboard/src/App/App.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
