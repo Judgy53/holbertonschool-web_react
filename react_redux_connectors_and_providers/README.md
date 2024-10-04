@@ -16,6 +16,7 @@ Table of Contents:
 - [2. Test MapStateToProps](#2-test-mapstatetoprops)
 - [3. Update mapStateToProps](#3-update-mapstatetoprops)
 - [4. Connect your actions creators](#4-connect-your-actions-creators)
+- [5. Refactor your code](#5-refactor-your-code)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -74,6 +75,17 @@ In the `App.js` file:
 - Connect to the component the actions creators `displayNotificationDrawer` and `hideNotificationDrawer`
 - You should use the simplified version for the `mapDispatchToProps`. No need to import `bindActionCreators`
 - Modify the render function of the component to use the functions passed within the props instead of the action within the Class component
+- File: `task_1/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 5. Refactor your code
+In the `App.js` file:
+- You can delete the old function `handleDisplayDrawer`
+- You can delete the old function `handleHideDrawer`
+- Remove any state property related to the display of the drawer
+- Remove any binding in the constructor
+- You are now passing to your components props. You need to define `propTypes` and `defaultProps`
 - File: `task_1/dashboard/src/App/App.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>

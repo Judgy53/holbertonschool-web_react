@@ -1,4 +1,5 @@
 import { StyleSheet, css } from 'aphrodite';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
@@ -14,6 +15,16 @@ import { AppContext, defaultLogOut, defaultUser } from './AppContext';
 
 class App extends React.Component {
   static contextType = AppContext;
+  static propTypes = {
+    displayDrawer: PropTypes.bool,
+    displayNotificationDrawer: PropTypes.func,
+    hideNotificationDrawer: PropTypes.func,
+  }
+  static defaultTypes = {
+    displayDrawer: false,
+    displayNotificationDrawer: () => { },
+    hideNotificationDrawer: () => { },
+  }
 
   constructor(props) {
     super(props);
@@ -24,7 +35,6 @@ class App extends React.Component {
     ];
 
     this.state = {
-      displayDrawer: false,
       user: defaultUser,
       logOut: defaultLogOut,
       listNotifications: [
@@ -39,8 +49,6 @@ class App extends React.Component {
     };
 
     this.keydown = this.keydown.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
@@ -61,17 +69,9 @@ class App extends React.Component {
     });
   }
 
-  handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
-  }
-
-  handleHideDrawer() {
-    this.setState({ displayDrawer: false });
-  }
-
   markNotificationAsRead(id) {
     const filteredList = this.state.listNotifications.filter(n => n.id !== id);
-    this.setState({listNotifications: filteredList});
+    this.setState({ listNotifications: filteredList });
   }
 
   componentDidMount() {
@@ -108,11 +108,11 @@ class App extends React.Component {
           <div className={css(styles.body)}>
             {user.isLoggedIn
               ? <BodySectionWithMarginBottom title="Course list" >
-                  <CourseList listCourses={this.listCourses} />
-                </BodySectionWithMarginBottom>
+                <CourseList listCourses={this.listCourses} />
+              </BodySectionWithMarginBottom>
               : <BodySectionWithMarginBottom title="Log in to continue" >
-                  <Login logIn={this.logIn} />
-                </BodySectionWithMarginBottom>
+                <Login logIn={this.logIn} />
+              </BodySectionWithMarginBottom>
             }
             <BodySection title="News from the School">
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda suscipit ipsam a quos voluptates dolor voluptas, unde quis atque, rerum vitae laudantium eius architecto recusandae, harum repellat labore sed iusto.</p>
