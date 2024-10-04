@@ -22,6 +22,7 @@ Table of Contents:
 - [8. Connect LoginRequest to the App](#8-connect-loginrequest-to-the-app)
 - [9. Connect user state to the Footer](#9-connect-user-state-to-the-footer)
 - [10. Connect Logout action creator to the Header](#10-connect-logout-action-creator-to-the-header)
+- [11. Modify the uiReducer](#11-modify-the-uireducer)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -144,5 +145,13 @@ Modify the file `Header/Header.js`
 - Connect the Header component to the `logout` action creator
 - Modify the render function and remove any use of the Context. Instead use the `user` prop. When the user clicks on the link, it should now dispatch the `logout` action creator
 - File: `task_2/dashboard/src/Header/Header.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 11. Modify the uiReducer
+Now that we can have the entire login request and the entire feedback loop, let’s modify a few things within the reducer:
+- When the action `LOGIN` is passed, set the user within the state to the one passed within the action
+- When the `LOGOUT` action is passed, make sure to set the `user` to `null`
+- File: `task_2/dashboard/src/reducers/uiReducer.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
