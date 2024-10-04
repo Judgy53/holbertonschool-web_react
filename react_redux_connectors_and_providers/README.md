@@ -21,6 +21,7 @@ Table of Contents:
 - [7. Async actions \& Thunk middleware](#7-async-actions--thunk-middleware)
 - [8. Connect LoginRequest to the App](#8-connect-loginrequest-to-the-app)
 - [9. Connect user state to the Footer](#9-connect-user-state-to-the-footer)
+- [10. Connect Logout action creator to the Header](#10-connect-logout-action-creator-to-the-header)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -132,5 +133,16 @@ Modify the file `Footer/Footer.js`
 - Connect the Footer component to the function you created
 - Modify the render function and remove any use of the Context. Instead use the `user` prop
 - File: `task_2/dashboard/src/Footer/Footer.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 10. Connect Logout action creator to the Header
+Modify the file `Header/Header.js`
+- Create a `mapStateToProps` function
+- Map the `user` props to the `user` within the Redux state
+- Connect the Header component to the function you created
+- Connect the Header component to the `logout` action creator
+- Modify the render function and remove any use of the Context. Instead use the `user` prop. When the user clicks on the link, it should now dispatch the `logout` action creator
+- File: `task_2/dashboard/src/Header/Header.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
