@@ -18,6 +18,7 @@ Table of Contents:
 - [4. Connect your actions creators](#4-connect-your-actions-creators)
 - [5. Refactor your code](#5-refactor-your-code)
 - [6. Update your tests](#6-update-your-tests)
+- [7. Async actions \& Thunk middleware](#7-async-actions--thunk-middleware)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -101,5 +102,13 @@ Tips:
 - Remember that the state of `uiReducer` is using Map from Immutable
 
 - File: `task_1/dashboard/src/App/App.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 7. Async actions & Thunk middleware
+Let’s implement the `LoginRequest` / `logout` actions creators accross the entire application. `LoginRequest` is calling an API and is Async. Therefore, Redux will not support it. We will need to use a middleware
+
+Install `redux-thunk` within your project. And in the `index.js` file, apply the middleware to your store
+- File: `task_2/dashboard/src/index.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
