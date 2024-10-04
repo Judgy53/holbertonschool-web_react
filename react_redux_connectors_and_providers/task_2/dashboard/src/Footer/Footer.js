@@ -1,19 +1,30 @@
-import { AppContext } from '../App/AppContext'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 
-function Footer() {
+function Footer({ user }) {
   return (
-    <AppContext.Consumer>
-      {({ user }) => (
-        <div>
-          <p>
-            Copyright {getFullYear()} - {getFooterCopy(true)}
-          </p>
-          {user.isLoggedIn && <p><a href="#">Contact us</a></p>}
-        </div>
-      )}
-    </AppContext.Consumer>
+    <div>
+      <p>
+        Copyright {getFullYear()} - {getFooterCopy(true)}
+      </p>
+      {user.isLoggedIn && <p><a href="#">Contact us</a></p>}
+    </div>
   );
 }
 
-export default Footer;
+Footer.propTypes = {
+  user: PropTypes.object
+}
+
+Footer.defaultProps = {
+  user: {}
+}
+
+function mapStateToProps(state) {
+  return {
+    user: state.get('user')
+  }
+}
+
+export default connect(mapStateToProps)(Footer);

@@ -20,6 +20,7 @@ Table of Contents:
 - [6. Update your tests](#6-update-your-tests)
 - [7. Async actions \& Thunk middleware](#7-async-actions--thunk-middleware)
 - [8. Connect LoginRequest to the App](#8-connect-loginrequest-to-the-app)
+- [9. Connect user state to the Footer](#9-connect-user-state-to-the-footer)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -120,5 +121,16 @@ Modify the file `App/App.js`:
 - Modify the component to use the new `login` function from the props instead of the one within the class
 - Refactor the component to remove any `login` or `logout` function and bind
 - File: `task_2/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 9. Connect user state to the Footer
+
+Modify the file `Footer/Footer.js`
+- Create a `mapStateToProps` function
+- Map the `user` props to the `user` within the Redux state
+- Connect the Footer component to the function you created
+- Modify the render function and remove any use of the Context. Instead use the `user` prop
+- File: `task_2/dashboard/src/Footer/Footer.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>

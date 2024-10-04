@@ -11,7 +11,7 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Notifications from '../Notifications/Notifications';
 import { getLatestNotification } from '../utils/utils';
-import { AppContext, defaultLogOut, defaultUser } from './AppContext';
+import { AppContext, defaultUser } from './AppContext';
 
 class App extends React.Component {
   static contextType = AppContext;
@@ -75,10 +75,9 @@ class App extends React.Component {
   render() {
     const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login } = this.props;
     const { user, listNotifications } = this.state;
-    const context = { user };
 
     return (
-      <AppContext.Provider value={context}>
+      <>
         <Notifications
           listNotifications={listNotifications}
           markNotificationAsRead={this.markNotificationAsRead}
@@ -105,7 +104,7 @@ class App extends React.Component {
             <Footer></Footer>
           </div>
         </div>
-      </AppContext.Provider>
+      </>
     );
   }
 }
