@@ -19,6 +19,7 @@ Table of Contents:
 - [5. Refactor your code](#5-refactor-your-code)
 - [6. Update your tests](#6-update-your-tests)
 - [7. Async actions \& Thunk middleware](#7-async-actions--thunk-middleware)
+- [8. Connect LoginRequest to the App](#8-connect-loginrequest-to-the-app)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -110,5 +111,14 @@ Let’s implement the `LoginRequest` / `logout` actions creators accross the ent
 
 Install `redux-thunk` within your project. And in the `index.js` file, apply the middleware to your store
 - File: `task_2/dashboard/src/index.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 8. Connect LoginRequest to the App
+Modify the file `App/App.js`:
+- Connect the action creator `loginRequest` and map it to the `login` prop
+- Modify the component to use the new `login` function from the props instead of the one within the class
+- Refactor the component to remove any `login` or `logout` function and bind
+- File: `task_2/dashboard/src/App/App.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
