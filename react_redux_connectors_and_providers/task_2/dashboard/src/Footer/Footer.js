@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 
-function Footer({ user }) {
+export function Footer({ user }) {
   return (
     <div>
       <p>
         Copyright {getFullYear()} - {getFooterCopy(true)}
       </p>
-      {user.isLoggedIn && <p><a href="#">Contact us</a></p>}
+      {user && <p><a href="#">Contact us</a></p>}
     </div>
   );
 }
@@ -18,7 +18,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  user: {}
+  user: null
 }
 
 function mapStateToProps(state) {

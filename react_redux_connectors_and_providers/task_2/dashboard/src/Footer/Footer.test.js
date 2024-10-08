@@ -1,22 +1,12 @@
-import { mount } from 'enzyme';
-import { AppContext, defaultLogOut, defaultUser } from '../App/AppContext';
-import Footer from './Footer';
+import { shallow } from 'enzyme';
+import { Footer } from './Footer';
 
 describe('<Footer />', () => {
-  let wrapper, context;
+  let wrapper;
 
-  describe('with default context', () => {
+  describe('default', () => {
     beforeEach(() => {
-      context = {
-        user: defaultUser,
-        logOut: defaultLogOut
-      };
-
-      wrapper = mount(
-        <AppContext.Provider value={context}>
-          <Footer />
-        </AppContext.Provider>
-      );
+      wrapper = shallow(<Footer />);
     });
 
     it('renders without crashing', () => { });
@@ -30,22 +20,17 @@ describe('<Footer />', () => {
     });
   });
 
-  describe('with logged in context', () => {
+  describe('with logged in props', () => {
     beforeEach(() => {
-      context = {
+      const props = {
         user: {
           email: 'a@a.com',
           password: 'azerty1234',
           isLoggedIn: true
-        },
-        logOut: defaultLogOut
+        }
       };
 
-      wrapper = mount(
-        <AppContext.Provider value={context}>
-          <Footer />
-        </AppContext.Provider>
-      );
+      wrapper = shallow(<Footer {...props}/>);
     });
 
     it('does render Contact link', () => {

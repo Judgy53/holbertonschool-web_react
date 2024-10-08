@@ -1,20 +1,12 @@
 import { shallow } from 'enzyme';
-import { withContext } from 'shallow-with-context';
-import { defaultUser, defaultLogOut } from '../App/AppContext';
-import Header from './Header';
+import { Header } from './Header';
 
 describe('<Header />', () => {
-  let wrapper, context;
+  let wrapper;
 
-  describe('with default context', () => {
+  describe('default', () => {
     beforeEach(() => {
-      context = {
-        user: defaultUser,
-        logOut: defaultLogOut
-      };
-
-      const HeaderWithContext = withContext(Header, context);
-      wrapper = shallow(<HeaderWithContext />, { context });
+      wrapper = shallow(<Header />);
     });
 
     it('renders without crashing', () => { });
@@ -29,21 +21,20 @@ describe('<Header />', () => {
     });
   });
 
-  describe('with logged in context', () => {
-    let logOutMock = jest.fn();
+  describe('with logged in props', () => {
+    const logOutMock = jest.fn();
 
     beforeEach(() => {
-      context = {
+      const props = {
         user: {
           email: 'a@a.com',
           password: 'azerty1234',
           isLoggedIn: true
         },
-        logOut: logOutMock
+        logout: logOutMock
       };
 
-      const HeaderWithContext = withContext(Header, context);
-      wrapper = shallow(<HeaderWithContext />, { context });
+      wrapper = shallow(<Header {...props}/>);
     });
 
     afterEach(() => {

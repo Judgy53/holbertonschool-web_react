@@ -23,6 +23,7 @@ Table of Contents:
 - [9. Connect user state to the Footer](#9-connect-user-state-to-the-footer)
 - [10. Connect Logout action creator to the Header](#10-connect-logout-action-creator-to-the-header)
 - [11. Modify the uiReducer](#11-modify-the-uireducer)
+- [12. Modify the test suites](#12-modify-the-test-suites)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -153,5 +154,26 @@ Now that we can have the entire login request and the entire feedback loop, letâ
 - When the action `LOGIN` is passed, set the user within the state to the one passed within the action
 - When the `LOGOUT` action is passed, make sure to set the `user` to `null`
 - File: `task_2/dashboard/src/reducers/uiReducer.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 12. Modify the test suites
+Modify the test suites of the different components you modified:
+- In the `App.test.js`, `Footer.test.js`, and `Header.test.js` to import the Stateless components instead of the connected component
+- Remove any use of the `mount` function, and convert everything to use the `shallow` function
+- You should remove any use of `setState` within the tests and pass directly the props to the stateless components
+- Remove any test linked to the `login`, `logout` function within App, and Header
+- Add a test in `uiReducer` to support the new action you just created
+
+Tips:
+- At this point your app should be functional and able to display/hide the drawer, login/logout using the Redux state
+- Remember that the state of uiReducer is using Map from Immutable
+- You can now see that your components logic is simplified. They only respond to props change. The logic is happening within the action creators
+
+Requirements:
+- Do not forget to add `defaultProps` and `PropTypes` to any component receiving props
+- No error should be displayed within the console
+- All the tests in the project should pass
+- File: `task_2/dashboard/src/App/App.test.js, task_2/dashboard/src/Footer/Footer.test.js, task_2/dashboard/src/Header/Header.test.js, task_2/dashboard/src/reducers/uiReducer.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>

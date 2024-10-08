@@ -6,14 +6,15 @@ import { logout } from '../actions/uiActionCreators';
 import { AppContext } from '../App/AppContext';
 import logo from '../assets/holberton-logo.jpg';
 
-class Header extends React.Component {
+export class Header extends React.Component {
   static contextType = AppContext;
   static propTypes = {
     user: PropTypes.object,
     logout: PropTypes.func
   }
   static defaultProps = {
-    user: {},
+    isLoggedIn: false,
+    user: null,
     logout: () => { }
   }
 
@@ -27,7 +28,7 @@ class Header extends React.Component {
             <h1>
               School dashboard
             </h1>
-            {user.isLoggedIn && (
+            {user && (
               <section id="logoutSection">
                 Welcome {user.email} <a href="#" onClick={logout}>(logout)</a>
               </section>

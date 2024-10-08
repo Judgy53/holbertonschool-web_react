@@ -1,30 +1,17 @@
 import { fromJS } from 'immutable';
-import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import App, { mapStateToProps } from './App';
-import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
+import { App, mapStateToProps } from './App';
+import ConnectedHeader from '../Header/Header';
+import ConnectedFooter from '../Footer/Footer';
 
 describe('<App />', () => {
-  const mockStore = configureStore();
-  const defaultState = fromJS({
-    isNotificationDrawerVisible: false,
-    isUserLoggedIn: false,
-    user: {}
-  });
-  let wrapper, store;
+  let wrapper;
 
-  beforeEach(() => {
-    store = mockStore(defaultState);
+  describe('default', () => {
+    beforeEach(() => {
+      wrapper = shallow(<App />);
+    });
 
-
-    wrapper = mount(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    ).find('App');
-  })
-
-  describe('isLoggedIn = false', () => {
     it('renders without crashing', () => { });
 
     it('contains the Notifications component', () => {
@@ -32,11 +19,11 @@ describe('<App />', () => {
     });
 
     it('contains the Header component', () => {
-      expect(wrapper.find('Header')).toHaveLength(1);
+      expect(wrapper.find(ConnectedHeader)).toHaveLength(1);
     });
 
     it('contains the Footer component', () => {
-      expect(wrapper.find('Footer')).toHaveLength(1);
+      expect(wrapper.find(ConnectedFooter)).toHaveLength(1);
     });
 
     it('contains the Login component', () => {
@@ -45,39 +32,6 @@ describe('<App />', () => {
 
     it('does not contain the CourseList component', () => {
       expect(wrapper.find('CourseList')).toHaveLength(0);
-    });
-  });
-
-  describe('isLoggedIn = true', () => {
-
-    it('updated the state correctly', () => {
-      const email = 'a@a.com';
-      const password = 'azerty1234';
-      const expected = {
-        email,
-        password,
-        isLoggedIn: true
-      }
-      wrapper.instance().logIn(email, password);
-      expect(wrapper.state('user')).toEqual(expected);
-    });
-  });
-
-  describe('logOut event', () => {
-    it('calls logOut prop', () => {
-      const logOutMock = jest.fn();
-      const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-      wrapper.setState({ logOut: logOutMock });
-
-      window.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'h',
-        ctrlKey: true,
-      }));
-
-      expect(logOutMock).toBeCalled();
-      expect(alertSpy).toBeCalledWith('Logging you out');
-
-      alertSpy.mockRestore();
     });
   });
 
@@ -104,7 +58,8 @@ describe('<App />', () => {
       });
       const expected = {
         isLoggedIn: true,
-        displayDrawer: false
+        displayDrawer: false,
+        user: fromJS({})
       };
       expect(mapStateToProps(state)).toEqual(expected);
     });

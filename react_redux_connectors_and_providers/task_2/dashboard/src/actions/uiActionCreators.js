@@ -77,7 +77,7 @@ export function boundLoginFailure(dispatch) {
 export function loginRequest(email, password) {
   return async (dispatch) => {
     dispatch(login(email, password));
-    return fetch('/dist/login-success.json')
+    return fetch('/login-success.json')
       .then(() => dispatch(loginSuccess()))
       .catch(() => dispatch(loginFailure()));
   }

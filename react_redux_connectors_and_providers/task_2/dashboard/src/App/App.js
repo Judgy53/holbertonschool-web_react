@@ -13,19 +13,23 @@ import Notifications from '../Notifications/Notifications';
 import { getLatestNotification } from '../utils/utils';
 import { AppContext, defaultUser } from './AppContext';
 
-class App extends React.Component {
+export class App extends React.Component {
   static contextType = AppContext;
   static propTypes = {
     displayDrawer: PropTypes.bool,
     displayNotificationDrawer: PropTypes.func,
     hideNotificationDrawer: PropTypes.func,
-    login: PropTypes.func
+    login: PropTypes.func,
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.object
   }
   static defaultTypes = {
     displayDrawer: false,
     displayNotificationDrawer: () => { },
     hideNotificationDrawer: () => { },
     login: () => { },
+    isLoggedIn: false,
+    user: null,
   }
 
   constructor(props) {
@@ -37,7 +41,6 @@ class App extends React.Component {
     ];
 
     this.state = {
-      user: defaultUser,
       listNotifications: [
         { id: 1, type: 'default', value: 'New course available' },
         { id: 2, type: 'urgent', value: 'New resume available' },
@@ -48,8 +51,6 @@ class App extends React.Component {
         }
       ]
     };
-
-    this.keydown = this.keydown.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
 
@@ -58,23 +59,9 @@ class App extends React.Component {
     this.setState({ listNotifications: filteredList });
   }
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.keydown);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.keydown);
-  }
-
-  keydown(e) {
-    if (e.ctrlKey === true && e.key.toLowerCase() === 'h') {
-      alert('Logging you out');
-    }
-  }
-
   render() {
-    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login } = this.props;
-    const { user, listNotifications } = this.state;
+    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer, isLoggedIn, login, user } = this.props;
+    const { listNotifications } = this.state;
 
     return (
       <>
@@ -88,7 +75,7 @@ class App extends React.Component {
         <div className={css(styles.app)}>
           <Header></Header>
           <div className={css(styles.body)}>
-            {user.isLoggedIn
+            {isLoggedIn
               ? <BodySectionWithMarginBottom title="Course list" >
                 <CourseList listCourses={this.listCourses} />
               </BodySectionWithMarginBottom>
@@ -136,7 +123,8 @@ const mapDispatchToProps = {
 export function mapStateToProps(state) {
   return {
     isLoggedIn: state.get('isUserLoggedIn'),
-    displayDrawer: state.get('isNotificationDrawerVisible')
+    displayDrawer: state.get('isNotificationDrawerVisible'),
+    user: state.get('user')
   };
 }
 
