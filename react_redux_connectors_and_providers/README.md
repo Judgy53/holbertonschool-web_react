@@ -24,6 +24,7 @@ Table of Contents:
 - [10. Connect Logout action creator to the Header](#10-connect-logout-action-creator-to-the-header)
 - [11. Modify the uiReducer](#11-modify-the-uireducer)
 - [12. Modify the test suites](#12-modify-the-test-suites)
+- [13. Understand how to use the Redux Chrome extension](#13-understand-how-to-use-the-redux-chrome-extension)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -175,5 +176,18 @@ Requirements:
 - No error should be displayed within the console
 - All the tests in the project should pass
 - File: `task_2/dashboard/src/App/App.test.js, task_2/dashboard/src/Footer/Footer.test.js, task_2/dashboard/src/Header/Header.test.js, task_2/dashboard/src/reducers/uiReducer.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 13. Understand how to use the Redux Chrome extension
+Install the Redux DevTools extension on your Chrome browser:
+- Modify the `index.js` to support the extension
+- Use the application and note the different actions being registered when you are logging in / logging out
+- Note that a version of the state is saved along the different actions and you can jump at a different moment of the user journey
+
+Tips:
+- Read the documentation of the extension to learn how to support the Chrome extension as well as the Thunk middleware
+- This extension can be one of the most powerful tool to debug an application. Make sure to become familiar with it
+- File: `task_3/dashboard/src/index.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
