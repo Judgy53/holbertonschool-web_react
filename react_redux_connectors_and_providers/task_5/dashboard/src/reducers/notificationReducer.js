@@ -4,7 +4,8 @@ import { notificationsNormalizer } from '../schema/notifications';
 
 export const initialState = new Map({
   notifications: {},
-  filter: ActionTypes.NotificationTypeFilters.DEFAULT
+  filter: ActionTypes.NotificationTypeFilters.DEFAULT,
+  loading: false,
 });
 
 export default function notificationReducer(state = initialState, action = { type: null }) {
@@ -20,6 +21,8 @@ export default function notificationReducer(state = initialState, action = { typ
       return setIn(state, ['notifications', String(action.index), 'isRead'], true);
     case ActionTypes.SET_TYPE_FILTER:
       return set(state, 'filter', action.filter);
+    case ActionTypes.SET_LOADING_STATE:
+      return set(state, 'loading', action.loading);
     default:
       return state;
   }
