@@ -25,6 +25,7 @@ Table of Contents:
 - [11. Modify the uiReducer](#11-modify-the-uireducer)
 - [12. Modify the test suites](#12-modify-the-test-suites)
 - [13. Understand how to use the Redux Chrome extension](#13-understand-how-to-use-the-redux-chrome-extension)
+- [14. Combine store: Root reducer](#14-combine-store-root-reducer)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -189,5 +190,17 @@ Tips:
 - Read the documentation of the extension to learn how to support the Chrome extension as well as the Thunk middleware
 - This extension can be one of the most powerful tool to debug an application. Make sure to become familiar with it
 - File: `task_3/dashboard/src/index.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 14. Combine store: Root reducer
+Since you have more than one reducer for your application, you will need to combine them into the store.
+
+Create a new file `reducers/rootReducer.js`, in this file, export a `rootReducer`:
+- the root should contain every reducer
+- `courses` maps to `courseReducer`
+- `notifications` maps to `notificationReducer`
+- `ui` maps to `uiReducer`
+- File: `task_4/dashboard/src/reducers/rootReducer.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
