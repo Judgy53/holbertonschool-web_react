@@ -3,7 +3,7 @@ import courseReducer from './courseReducer';
 import notificationReducer from './notificationReducer';
 import uiReducer from './uiReducer';
 
-export default rootReducer = combineReducers({
+export default combineReducers({
   courses: courseReducer,
   notifications: notificationReducer,
   ui: uiReducer

@@ -9,6 +9,7 @@ import logo from '../assets/holberton-logo.jpg';
 export class Header extends React.Component {
   static contextType = AppContext;
   static propTypes = {
+    isLoggedIn: PropTypes.bool,
     user: PropTypes.object,
     logout: PropTypes.func
   }
@@ -19,7 +20,7 @@ export class Header extends React.Component {
   }
 
   render() {
-    const { user, logout } = this.props;
+    const { isLoggedIn, user, logout } = this.props;
     return (
       <>
         <div className={css(styles.header)}>
@@ -28,7 +29,7 @@ export class Header extends React.Component {
             <h1>
               School dashboard
             </h1>
-            {user && (
+            {isLoggedIn && (
               <section id="logoutSection">
                 Welcome {user.email} <a href="#" onClick={logout}>(logout)</a>
               </section>
@@ -60,7 +61,8 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state) {
   return {
-    user: state.get('user')
+    isLoggedIn: state.ui.get('isUserLoggedIn'),
+    user: state.ui.get('user')
   }
 }
 

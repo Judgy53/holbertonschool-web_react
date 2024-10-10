@@ -122,9 +122,9 @@ const mapDispatchToProps = {
 
 export function mapStateToProps(state) {
   return {
-    isLoggedIn: state.get('isUserLoggedIn'),
-    displayDrawer: state.get('isNotificationDrawerVisible'),
-    user: state.get('user')
+    isLoggedIn: state.ui.get('isUserLoggedIn'),
+    displayDrawer: state.ui.get('isNotificationDrawerVisible'),
+    user: state.ui.get('user')
   };
 }
 
