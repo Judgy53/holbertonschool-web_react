@@ -26,6 +26,7 @@ describe('<Header />', () => {
 
     beforeEach(() => {
       const props = {
+        isLoggedIn: true,
         user: {
           email: 'a@a.com',
           password: 'azerty1234',

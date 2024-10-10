@@ -51,11 +51,13 @@ describe('<App />', () => {
 
   describe('mapStateToProps', () => {
     it('returns the right object when passing a state', () => {
-      const state = fromJS({
-        isNotificationDrawerVisible: false,
-        isUserLoggedIn: true,
-        user: {}
-      });
+      const state = {
+        ui: fromJS({
+          isNotificationDrawerVisible: false,
+          isUserLoggedIn: true,
+          user: {}
+        })
+      };
       const expected = {
         isLoggedIn: true,
         displayDrawer: false,

@@ -26,6 +26,8 @@ Table of Contents:
 - [12. Modify the test suites](#12-modify-the-test-suites)
 - [13. Understand how to use the Redux Chrome extension](#13-understand-how-to-use-the-redux-chrome-extension)
 - [14. Combine store: Root reducer](#14-combine-store-root-reducer)
+- [15. Combine store: modify the application](#15-combine-store-modify-the-application)
+- [16. Combine store: write the tests](#16-combine-store-write-the-tests)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -202,5 +204,35 @@ Create a new file `reducers/rootReducer.js`, in this file, export a `rootReducer
 - `notifications` maps to `notificationReducer`
 - `ui` maps to `uiReducer`
 - File: `task_4/dashboard/src/reducers/rootReducer.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 15. Combine store: modify the application
+In the `index.js`, create the store using the root reducer instead of only the ui reducer:
+
+- Any component connected to the state will probably need to be updated since you added a nested level
+- File: `task_4/dashboard/src/index.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 16. Combine store: write the tests
+Modify the test suites:
+
+- In the `App.test.js`, modify `mapStateToProps` to correctly work with the new format of the reducer
+- Create a `rootReducer.test.js` file to test the root reducer’s initial state for the following structure:
+
+```js
+{
+  courses: Map {},
+  notifications: Map {},
+  ui: Map {}
+}
+```
+
+Requirements:
+- No errors in the browser’s console
+- All tests should pass
+- Use `combineReducer` to create the root reducer
+- File: `task_4/dashboard/src/App/App.test.js, task_4/dashboard/src/reducers/rootReducer.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
