@@ -48,11 +48,11 @@ export function boundSetNotifications(dispatch) {
 }
 
 export function fetchNotifications() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setLoadingState(true));
     return fetch('/notifications.json')
       .then((response) => response.json())
-      .then((json) => dispatch(json))
-      .finally(() => setLoadingState(false));
+      .then((json) => dispatch(setNotifications(json)))
+      .finally(() => dispatch(setLoadingState(false)));
   }
 }

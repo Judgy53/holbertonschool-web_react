@@ -10,8 +10,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Notifications from '../Notifications/Notifications';
-import { getLatestNotification } from '../utils/utils';
-import { AppContext, defaultUser } from './AppContext';
+import { AppContext } from './AppContext';
 
 export class App extends React.Component {
   static contextType = AppContext;
@@ -39,35 +38,14 @@ export class App extends React.Component {
       { id: 2, name: 'Webpack', credit: 20 },
       { id: 3, name: 'React', credit: 40 }
     ];
-
-    this.state = {
-      listNotifications: [
-        { id: 1, type: 'default', value: 'New course available' },
-        { id: 2, type: 'urgent', value: 'New resume available' },
-        {
-          id: 3, type: 'urgent', html: {
-            __html: getLatestNotification()
-          }
-        }
-      ]
-    };
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
-  }
-
-  markNotificationAsRead(id) {
-    const filteredList = this.state.listNotifications.filter(n => n.id !== id);
-    this.setState({ listNotifications: filteredList });
   }
 
   render() {
-    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer, isLoggedIn, login, user } = this.props;
-    const { listNotifications } = this.state;
+    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer, isLoggedIn, login } = this.props;
 
     return (
       <>
         <Notifications
-          listNotifications={listNotifications}
-          markNotificationAsRead={this.markNotificationAsRead}
           displayDrawer={displayDrawer}
           handleDisplayDrawer={displayNotificationDrawer}
           handleHideDrawer={hideNotificationDrawer}

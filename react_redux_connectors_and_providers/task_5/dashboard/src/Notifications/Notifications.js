@@ -1,36 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NotificationItem from './NotificationItem';
-import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
+import { fetchNotifications } from '../actions/notificationActionCreators';
 
-class Notifications extends React.PureComponent {
+export class Notifications extends React.PureComponent {
   static propTypes = {
-    listNotifications: PropTypes.arrayOf(PropTypes.shape(NotificationItemShape)),
-    markNotificationAsRead: PropTypes.func,
+    listNotifications: PropTypes.object,
+    fetchNotifications: PropTypes.func,
     displayDrawer: PropTypes.bool,
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func
   }
 
   static defaultProps = {
-    listNotifications: [],
-    markNotificationAsRead: () => { },
+    listNotifications: {},
+    fetchNotifications: () => { },
     displayDrawer: false,
     handleDisplayDrawer: () => { },
     handleHideDrawer: () => { },
   }
 
-  render() {
-    const { listNotifications, markNotificationAsRead, displayDrawer, handleDisplayDrawer, handleHideDrawer } = this.props;
+  componentDidMount() {
+    const { fetchNotifications } = this.props;
+    fetchNotifications();
+  }
 
-    const notificationItems = listNotifications.map(item =>
+  render() {
+    const { listNotifications, displayDrawer, handleDisplayDrawer, handleHideDrawer } = this.props;
+
+    const notificationItems = Object.values(listNotifications).map(item =>
       <NotificationItem
         type={item.type}
         value={item.value}
         html={item.html}
-        key={item.id}
-        markAsRead={() => markNotificationAsRead(item.id)}
+        key={item.id || item.guid}
       />
     );
 
@@ -98,9 +103,12 @@ const styles = StyleSheet.create({
     right: '1rem',
     top: '2rem',
     minwWidth: '33vw',
+    maxWidth: '50vw',
+    backgroundColor: 'rgba(0, 0, 0, .2)',
     '@media (max-width: 900px)': {
       inset: 0,
       width: '100%',
+      maxWidth: 'unset',
       height: '100%',
       border: 'none',
       padding: 0,
@@ -108,11 +116,15 @@ const styles = StyleSheet.create({
     }
   },
   ul: {
+    maxHeight: '300px',
+    overflowY: 'scroll',
     '@media (max-width: 900px)': {
       margin: 0,
       padding: 0,
       listStyle: 'none',
       fontSize: '20px',
+      maxHeight: 'unset',
+      overflowY: 'unset',
     }
   },
   closeBtn: {
@@ -131,4 +143,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Notifications;
+const mapDispatchToProps = {
+  fetchNotifications
+}
+
+function mapStateToProps(state) {
+  return {
+    listNotifications: state.notifications.get('notifications').get('messages')
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import Notifications from './Notifications';
+import { Notifications } from './Notifications';
 
 describe('<Notifications />', () => {
   let wrapper;
@@ -39,15 +39,15 @@ describe('<Notifications />', () => {
     });
 
     describe('listNotifications = [...]', () => {
-      const listNotifications = [
-        { id: 1, type: 'default', value: 'test1' },
-        { id: 2, type: 'urgent', value: 'test2' },
-        {
+      const listNotifications = {
+        '1': { id: 1, type: 'default', value: 'test1' },
+        '2': { id: 2, type: 'urgent', value: 'test2' },
+        '3': {
           id: 3, type: 'urgent', html: {
             __html: '<u>test3</u>'
           }
         }
-      ];
+      };
 
       beforeEach(() => {
         wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
@@ -62,47 +62,47 @@ describe('<Notifications />', () => {
       });
 
       it('renders the items correctly', () => {
-        listNotifications.forEach(notification => {
+        Object.values(listNotifications).forEach(notification => {
           const item = wrapper.find('NotificationItem').filterWhere((n) => n.key() === notification.id.toString());
           expect(item).toHaveLength(1);
           expect(item.prop('type')).toEqual(notification.type);
           if (notification.value)
-             expect(item.prop('value')).toEqual(notification.value);
+            expect(item.prop('value')).toEqual(notification.value);
           if (notification.html)
-             expect(item.prop('html')).toEqual(notification.html);
+            expect(item.prop('html')).toEqual(notification.html);
         });
       });
     });
   });
 
   it('does not rerender when updating the props with the same list', () => {
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'test1' }
-    ];
+    const listNotifications = {
+      '1': { id: 1, type: 'default', value: 'test1' }
+    };
 
-    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
     const renderMock = jest.spyOn(wrapper.instance(), 'render');
 
-    wrapper.setProps({listNotifications: listNotifications});
+    wrapper.setProps({ listNotifications: listNotifications });
     expect(renderMock.mock.calls.length).toEqual(0);
 
     renderMock.mockRestore();
   });
 
   it('does rerender when updating the props with a bigger list', () => {
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'test1' }
-    ];
+    const listNotifications = {
+      '1': { id: 1, type: 'default', value: 'test1' }
+    };
 
-    const biggerList = [
+    const biggerList = {
       ...listNotifications,
-      { id: 2, type: 'urgent', value: 'test2' }
-    ];
+      '2': { id: 2, type: 'urgent', value: 'test2' }
+    };
 
-    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
     const renderMock = jest.spyOn(wrapper.instance(), 'render');
 
-    wrapper.setProps({listNotifications: biggerList});
+    wrapper.setProps({ listNotifications: biggerList });
     expect(renderMock.mock.calls.length).toEqual(1);
 
     renderMock.mockRestore();

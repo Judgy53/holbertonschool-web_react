@@ -30,6 +30,7 @@ Table of Contents:
 - [16. Combine store: write the tests](#16-combine-store-write-the-tests)
 - [17. Connect notifications: New Action Creator](#17-connect-notifications-new-action-creator)
 - [18. Connect notifications: Improve reducer](#18-connect-notifications-improve-reducer)
+- [19. Connect notifications to the reducer](#19-connect-notifications-to-the-reducer)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -260,5 +261,14 @@ In the function `notificationReducer` within `notificationReducer.js`:
 - Create a `SET_LOADING_STATE` case and update the state accordingly
 - Modify the `FETCH_NOTIFICATIONS_SUCCESS` case to perform a `mergeDeep` with the data
 - File: `task_5/dashboard/src/reducers/notificationReducer.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 19. Connect notifications to the reducer
+In the `Notifications.js` component:
+- Map the prop `listNotifications` to the `messages` within the `notifications` state
+- Map the action `fetchNotifications` to the component
+- In `componentDidMount`, call `fetchNotifications`
+- File: `task_5/dashboard/src/Notifications/Notifications.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>

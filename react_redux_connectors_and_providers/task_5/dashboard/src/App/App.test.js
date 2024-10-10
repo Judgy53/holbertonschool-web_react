@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { App, mapStateToProps } from './App';
 import ConnectedHeader from '../Header/Header';
 import ConnectedFooter from '../Footer/Footer';
+import ConnectedNotifications from '../Notifications/Notifications';
 
 describe('<App />', () => {
   let wrapper;
@@ -15,7 +16,7 @@ describe('<App />', () => {
     it('renders without crashing', () => { });
 
     it('contains the Notifications component', () => {
-      expect(wrapper.find('Notifications')).toHaveLength(1);
+      expect(wrapper.find(ConnectedNotifications)).toHaveLength(1);
     });
 
     it('contains the Header component', () => {
@@ -34,20 +35,6 @@ describe('<App />', () => {
       expect(wrapper.find('CourseList')).toHaveLength(0);
     });
   });
-
-  describe('state.listNotifications', () => {
-    it('removes a notification when markNotificationAsRead is called', () => {
-      const listMock = [
-        { id: 1, type: 'default', value: 'New course available' },
-        { id: 2, type: 'urgent', value: 'New resume available' },
-      ]
-      wrapper.setState({ listNotifications: listMock });
-
-      wrapper.instance().markNotificationAsRead(1);
-      expect(wrapper.state('listNotifications')).toHaveLength(1);
-      expect(wrapper.state('listNotifications').filter(n => n.id === 1)).toHaveLength(0);
-    });
-  })
 
   describe('mapStateToProps', () => {
     it('returns the right object when passing a state', () => {
