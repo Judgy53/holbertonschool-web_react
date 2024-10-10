@@ -28,6 +28,7 @@ Table of Contents:
 - [14. Combine store: Root reducer](#14-combine-store-root-reducer)
 - [15. Combine store: modify the application](#15-combine-store-modify-the-application)
 - [16. Combine store: write the tests](#16-combine-store-write-the-tests)
+- [17. Connect notifications: New Action Creator](#17-connect-notifications-new-action-creator)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -234,5 +235,19 @@ Requirements:
 - All tests should pass
 - Use `combineReducer` to create the root reducer
 - File: `task_4/dashboard/src/App/App.test.js, task_4/dashboard/src/reducers/rootReducer.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 17. Connect notifications: New Action Creator
+We now know how to connect a simple component to a reducer. Let’s work on connecting a more complex component to the the entire API.
+
+Add the following three action creators to `notificationActionCreators.js`
+- `setLoadingState` whose parameter is a boolean. It will send the `SET_LOADING_STATE` action and the boolean.
+- `setNotifications` whose parameter is an array. It will send the `FETCH_NOTIFICATIONS_SUCCESS` action with the data.
+- `fetchNotifications` (which does not have a parameter). Calling it will dispatch `setLoadingState` with the boolean set to true
+    - It fetches `/notifications.json`
+    - Once the fetch is realized, it will dispatch `setNotifications` with the data
+    - At the end of the query it sets the loading state to `false` again
+- File: `task_5/dashboard/src/actions/notificationActionCreators.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
