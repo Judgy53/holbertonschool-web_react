@@ -31,6 +31,9 @@ Table of Contents:
 - [17. Connect notifications: New Action Creator](#17-connect-notifications-new-action-creator)
 - [18. Connect notifications: Improve reducer](#18-connect-notifications-improve-reducer)
 - [19. Connect notifications to the reducer](#19-connect-notifications-to-the-reducer)
+- [20. Connect notifications: clean up](#20-connect-notifications-clean-up)
+- [21. Connect notifications: update the test suites](#21-connect-notifications-update-the-test-suites)
+- [22. Selectors](#22-selectors)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -270,5 +273,52 @@ In the `Notifications.js` component:
 - Map the action `fetchNotifications` to the component
 - In `componentDidMount`, call `fetchNotifications`
 - File: `task_5/dashboard/src/Notifications/Notifications.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 20. Connect notifications: clean up
+With this new behavior, let’s clean up old functions and test data.
+- Delete `NotificationItemShape.js`
+- Remove the notification list and delete `markNotificationAsRead` within `App.js`
+- File: `task_5/dashboard/src/App/App.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 21. Connect notifications: update the test suites
+Modify the test suites to pass the tests:
+- Update `notificationReducer.test.js` to support the new attributes and default state
+- Clean up `App.test.js` for the function you just removed
+- Modify `Notifications.js` and `Notifications.test.js` to make sure that every tests pass correctly
+
+Add new tests:
+- Add a test in `Notifications.test.js` to verify that the function `fetchNotifications` is called when the component is mounted
+- Add a test for `setLoadingState`, `setNotifications`, and `fetchNotifications` to verify that they each create the right actions
+- Add a test for `SET_LOADING_STATE` to verify that it updates the reducer correctly
+
+Tips:
+- At this point, when you load the page, you should be able to see the list of notifications coming from the API using the developer tools or when clicking on the notifications toggle
+- Use some CSS to make the notifications panel readable
+- Look at `valueSeq` from Immutable to iterate on your list of notifications without having to use `toJS()`
+
+Requirements:
+- Make sure to update the different Proptypes so you don’t have any errors in the console
+- Make sure to create the new actions that the action creators are using
+- File: `task_5/dashboard/src/reducers/notificationReducer.test.js, task_5/dashboard/src/App/App.test.js, task_5/dashboard/src/Notifications/Notifications.js, task_5/dashboard/src/Notifications/Notifications.test.js, task_5/dashboard/src/actions/notificationActionCreators.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 22. Selectors
+To improve performance in your connector, you should always use selectors when you can. Let’s modify the Notifications connector to reuse the selector we built in the previous project:
+- Update `Notifications.js` to use `getUnreadNotifications`
+- Map the `markAsAread` action creator to the component, and use it for `markNotificationAsRead`
+
+Tips:
+- At this point, when you load the page, you should be able to see the list of notifications. Clicking on one notification should make it disappear from the list
+
+Requirements:
+- Make sure to update the selector to use the same `valueSeq` you created previously
+- Make sure to update the tests to work as expected
+- Make sure to create the new actions that the action creators are using
+- File: `task_6/dashboard/src/Notifications/Notifications.js, task_6/dashboard/src/Notifications/Notifications.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
