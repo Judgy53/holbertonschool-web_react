@@ -34,6 +34,9 @@ Table of Contents:
 - [20. Connect notifications: clean up](#20-connect-notifications-clean-up)
 - [21. Connect notifications: update the test suites](#21-connect-notifications-update-the-test-suites)
 - [22. Selectors](#22-selectors)
+- [23. Connect courses: create a course selector](#23-connect-courses-create-a-course-selector)
+- [24. Connect courses: create a fetch courses function](#24-connect-courses-create-a-fetch-courses-function)
+- [25. Connect the courses component](#25-connect-the-courses-component)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -320,5 +323,59 @@ Requirements:
 - Make sure to update the tests to work as expected
 - Make sure to create the new actions that the action creators are using
 - File: `task_6/dashboard/src/Notifications/Notifications.js, task_6/dashboard/src/Notifications/Notifications.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 23. Connect courses: create a course selector
+In `selectors/courseSelector.js`, create a selector that will:
+- Get all the course entities from within the reducer
+- Return a List using `valueSeq` from Immutable
+
+Write a new file `courseSelector.test.js`, that will verify that the selector is working correctly
+- File: `task_7/dashboard/src/selectors/courseSelector.js, task_7/dashboard/src/selectors/courseSelector.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 24. Connect courses: create a fetch courses function
+In `actions/courseActionCreators.js`:
+- Create a new function named `fetchCourses`, that will query the API in `courses.json` (provided in the project description, put it in your `dist` folder)
+- When the API returns the data, dispatch the action `setCourses`
+
+In `courseActionCreators.test.js`, create a test to verify that the fetch is working correctly
+- File: `task_7/dashboard/src/actions/courseActionCreators.js, task_7/dashboard/src/actions/courseActionCreators.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 25. Connect the courses component
+
+In `CourseList.js`, connect the component to:
+- The three action creators: `fetchCourses`, `selectCourse`, and `unSelectCourse`
+- Connect the data to the list of courses using `getListCourses` selector
+- When the component mount, call the action `fetchCourses`
+
+Create a new function `onChangeRow`:
+- It will take two arguments: `id (string)`, `checked (boolean)`
+- When `checked` is `true`, call the action `selectCourse` with the id
+- When `checked` is `false`, call the action `unSelectCourse` with the id
+
+Modify `CourseListRow`:
+- Pass a new prop, `isChecked`, to the component that will pass the `isSelected` attribute coming from the state of the reducer
+- Pass the `onChangeRow` function to the component
+- Modify the component to not use its local state anymore
+
+In the file `CourseList.test.js`, create two new tests:
+- Verify that the action is dispatched when the component is mounted
+- Verify that the two actions are correctly dispatched when the `onChangeRow` function is called
+
+Tips:
+- At this point, when you load the page and you log in, you should be able to see the list of courses. Make sure that everything is working correctly using the developer tools or using the Redux tool
+- When checking or unchecking a row, you should see the state in the Redux tool updated. You should also see the change on the UI
+- Be careful that the API is sending Strings instead of Number for the IDs. You will probably need to adapt your reducers and tests
+- Delete the `CourseShape` file now
+
+Requirements:
+
+- Make sure to update the tests to work as expected
+- File: `task_7/dashboard/src/CourseList/CourseList.js, task_7/dashboard/src/CourseList/CourseList.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
