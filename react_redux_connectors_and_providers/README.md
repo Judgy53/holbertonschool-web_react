@@ -37,6 +37,9 @@ Table of Contents:
 - [23. Connect courses: create a course selector](#23-connect-courses-create-a-course-selector)
 - [24. Connect courses: create a fetch courses function](#24-connect-courses-create-a-fetch-courses-function)
 - [25. Connect the courses component](#25-connect-the-courses-component)
+- [26. Memoized selectors: Redux Reselect](#26-memoized-selectors-redux-reselect)
+- [27. Memoized selectors: update the UI](#27-memoized-selectors-update-the-ui)
+- [28. Memoized selectors: update the test suite](#28-memoized-selectors-update-the-test-suite)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -377,5 +380,44 @@ Requirements:
 
 - Make sure to update the tests to work as expected
 - File: `task_7/dashboard/src/CourseList/CourseList.js, task_7/dashboard/src/CourseList/CourseList.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 26. Memoized selectors: Redux Reselect
+Our current selectors are useful but they are not really performant. Imagine a very long list of notifications with multiple filters on the type and on the read status. This would require a lot of resources to compute. Memoized selectors are very powerful in this sense.
+
+Install Redux Reselect and create a new selector named `getUnreadNotificationsByType` in `notificationSelector.js`:
+- This selector should combine the state of the filter, and the list of notifications
+- When the filter is set to default, it should return all the unread notifications
+- When the filter is set to urgent, it should return all the unread and urgent notifications
+- Delete `getUnreadNotifications`
+- File: `task_8/dashboard/src/selectors/notificationSelector.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 27. Memoized selectors: update the UI
+In the Notifications component:
+- Update the component to use the new selector you just created
+- Map the component to the Action `setNotificationFilter`
+- Add two buttons under the text `Here is the list of notifications`. The first one contains `‼️`. On click, it set the filters of notifications to `URGENT`. The second one contains `?`. On click, it sets the filter of notifications to `DEFAULT`
+- File: `task_8/dashboard/src/Notifications/Notifications.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 28. Memoized selectors: update the test suite
+In `Notifications.test.js`, add two new tests:
+- Clicking on the first button should call `setNotificationFilter` with `URGENT`
+- Clicking on the second button should call `setNotificationFilter` with `DEFAULT`
+
+In `notificationSelector.test.js`:
+- Update the previous tests to work correctly
+- Create a new test to verify that the selector returns unread urgent notifications when the filter is set
+
+Tips:
+- At this point, you should be able to load the notifications panel, filter the list using the two new buttons, and mark items as read
+
+Requirements:
+- Make sure to update the tests to work as expected
+- File: `task_8/dashboard/src/Notifications/Notifications.test.js, task_8/dashboard/src/selectors/notificationSelector.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
