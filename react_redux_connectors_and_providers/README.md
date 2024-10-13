@@ -40,6 +40,7 @@ Table of Contents:
 - [26. Memoized selectors: Redux Reselect](#26-memoized-selectors-redux-reselect)
 - [27. Memoized selectors: update the UI](#27-memoized-selectors-update-the-ui)
 - [28. Memoized selectors: update the test suite](#28-memoized-selectors-update-the-test-suite)
+- [29. Container/Component](#29-containercomponent)
 
 ## 0. Write mapStateToProps
 Reuse the latest dashboard project you worked on in the React course `0x09-React_Redux_reducer` and install `react-redux`
@@ -419,5 +420,19 @@ Tips:
 Requirements:
 - Make sure to update the tests to work as expected
 - File: `task_8/dashboard/src/Notifications/Notifications.test.js, task_8/dashboard/src/selectors/notificationSelector.test.js`
+
+<sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
+
+## 29. Container/Component
+Our components can become very verbose when we start adding connectors and actions. It is also becoming harder to tests what is supposed to be our React component, and the interations of the application. To simplify our architecture, we can use the concept of containers and components:
+- Create a new file `NotificationsContainer.js`. This component will take care of connecting to the state, and fetching the notifications on mount
+- The component should render the `Notifications` components and pass the required props to it
+- Modify the file `Notifications.js`. It should now become a functional component
+- Create a new test file for `NotificationsContainer.js`. It should make sure the fetching is happening on mount
+- Modify `Notifications.test.js` file to only support the new behavior of the file
+
+Tips:
+- No need to repeat every single prop, you can use the spread operator
+- File: `task_9/dashboard/src/Notifications/Notifications.js, task_9/dashboard/src/Notifications/Notifications.test.js, task_9/dashboard/src/Notifications/NotificationsContainer.js, task_9/dashboard/src/Notifications/NotificationsContainer.test.js`
 
 <sub>[Return to Top](#react_redux_connectors_and_providers)</sub>
